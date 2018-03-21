@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "647816110986",
+    "firebase_url": "https://shappapp-c2aaf.firebaseio.com",
+    "project_id": "shappapp-c2aaf",
+    "storage_bucket": "shappapp-c2aaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647816110986:android:63ee96ba5832fef3",
+        "android_client_info": {
+          "package_name": "com.qnally.shappapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647816110986-meeeka5drlcjfn1dfvnjkq381nntm9s2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qnally.shappapp",
+            "certificate_hash": "b99af405860a58723dcbbd1067b27bc9cfb2f2a9"
+          }
+        },
+        {
+          "client_id": "647816110986-bapqr7pr2488b2l3bj65mfnn6bon5ggc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx3wMYzKg7Ue8m5pfi1rNsvmldHVo_SlQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647816110986-bapqr7pr2488b2l3bj65mfnn6bon5ggc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

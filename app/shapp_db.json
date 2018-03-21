@@ -1,0 +1,358 @@
+{
+  "Customer" : {
+    "jimjac12@yahoo" : {
+      "first_name" : "James",
+      "last_name" : "Jim",
+      "password" : "qwerty",
+      "email_string": "jimjac12@yahoo"
+    },
+    "jimjac1@yahoo" : {
+      "first_name" : "Jimmy",
+      "last_name" : "Jacobs",
+      "password" : "123456",
+      "email_string": "jimjac1@yahoo"
+    },
+    "john_doe@gmailcom" : {
+      "first_name" : "John",
+      "last_name" : "Doe",
+      "password" : "Password2",
+      "email_string": "john_doe@gmail"
+    }
+  },
+  "MostPopularItems" : {
+    "mp1": {
+      "image" : "https://compass-ssl.xbox.com/assets/e5/4a/e54a08ff-38e4-45a7-be4c-50fe5e92564b.jpg?n=Xbox_Family_Image-0_PS_496x279.jpg",
+      "name" : "Xbox One 1TB Console",
+      "price" : "$299.00",
+      "description" : "Weight anchor and pre-order the Xbox One S sea of Thieves Bundle, Featuring a full-game download. Xbox One S features 4K Ultra HD Blu-ray, 4K video streaming, high dynamic range, Premium audio, and an Xbox wireless Controller.",
+     "categoryId" : "01"
+    },
+    "mp2": {
+      "image" : "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/8795346_fpx.tif?op_sharpen=1&wid=400&hei=489&fit=fit,1&$filterlrg$",
+      "name" : "Crevo Men's Denham Chelsea Boot",
+      "price" : "$56.94",
+      "description" : "Make a stylish statement with the Denham fashion boots by Crevo. These chelsea boots feature genuine leather uppers with gorging side panels, rear pull loop tabs, memory foam cushioned footbeds for added comfort, 1.25 inch heels, 7 inch shafts and a flexible, non-slip rubber outsole with an inverted lug design.",
+     "categoryId" : "03"
+    },
+    "mp3": {
+      "image" : "http://i.dailymail.co.uk/i/pix/2018/01/05/19/1966013200000514-5239999-Alexa_could_soon_be_coming_to_a_lot_more_devices_from_smart_watc-m-10_1515180253387.jpg",
+      "name" : "Echo Dot (2nd Generation)",
+      "price" : "$49.99",
+      "description" : "Echo Dot is a hands-free, voice-controlled device with a small built-in speaker—it can also connect to your speakers or headphones over Bluetooth or through a 3.5 mm audio cable to deliver stereo sound to the speakers you choose. Dot connects to the Alexa Voice Service to play music, make calls, send and receive messages, provide information, news, sports scores, weather, and more—instantly.",
+     "categoryId" : "04"
+    },
+    "mp4": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51jl2z8KihL._SL1200_.jpg",
+      "name" : "Apple Airpods Wireless Bluetooth Headset",
+      "price" : "$226.49",
+      "description" : "Wireless headphones-After a simple one-tap setup,AirPods are automatically on and always connected. They can sense when they're in your ears and pause when you take them out. Tap into Siri- Talking to your favourite personal assistant is a cinch. Just double-tap either Air Pod to activate Siri, without taking your iPhone out of your pocket. Provide rich, high-quality AAC audio. And when you want to be heard, dual beam forming microphones filter out background noise when you make calls or talk to Siri.",
+     "categoryId" : "01"
+    },
+    "mp5": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/61xOSB1xTIL._SX522_.jpg",
+      "name" : "ANKOVO Digital Medical Infrared Forehead and Ear Thermometer",
+      "price" : "$29.99",
+      "description" : "It is the Best All-in-One Solution For Fever and Body Temperature Measurement for the Entire Family. No inconvenience would be caused to your daily life. It’s available for measurement when your Children is sleeping. It is measurement of forehead temperature and ear temperature. Thanks to the dual mode design, you are free to take body temperature by detecting the infrared heat given off by the forehead ,which is from 32℃ to 42.2℃ (from 89.6℉ to 107.9℉), and by the eardrum, which is from 0℃ to 100.0℃（from 32.0℉ to 212.0℉)",
+     "categoryId" : "04"
+    },
+    "mp6": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/61ZAWVoW9BL._SL1000_.jpg",
+      "name" : "Fire 7 Tablet with Alexa, 7\" Display, 8 GB",
+      "price" : "$49.99",
+      "description" : "The next generation of our best-selling Fire tablet ever - now thinner, lighter, and with longer battery life and an improved display. More durable than the latest iPad, the Fire has 7\" IPS display with higher contrast and sharper text, a 1.3 GHz quad-core processor, and up to 8 hours of battery life. 8 or 16 GB of internal storage and a microSD slot for up to 256 GB of expandable storage. Now with Alexa, for quick access to the information and entertainment you want. Ask questions, play music, check your calendar, get the news, weather, and more - just press the home button and ask. Ask Alexa to call or message almost anyone, or make video calls to family and friends with a Fire tablet, Echo Spot, Echo Show, or the Alexa App. Instantly connect to enabled Echo devices.Enjoy millions of movies, TV shows, songs, Kindle eBooks, apps and games - including Netflix, Facebook, HBO, Spotify, and more. Watch downloaded videos anywhere with a Prime membership, Netflix plan, or Showtime subscription.",
+     "categoryId" : "01"
+    },
+    "mp7": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51D8NXwQfvL._SL1000_.jpg",
+      "name" : "Fire TV Stick with Alexa Voice Remote | Streaming Media Player",
+      "price" : "$39.99",
+      "description" : "Just plug Fire TV Stick into your HDTV and start streaming in minutes. Use the included Alexa Voice Remote to find the best way to watch across more than 190 channels and apps with universal search. With the fastest Wi-Fi and most accurate voice search of any streaming media stick, shows and movies start faster and stream smoother than ever."
+    },
+    "mp8": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/61GcN5yX6XL._SL1000_.jpg",
+      "name" : "Echo Spot",
+      "price" : "$129.99",
+      "description" : "Echo Spot brings you everything you love about Alexa, in an all-new stylish and compact design that can show you things. Just ask to see the weather, get the news with a video flash briefing, set an alarm, see lyrics with Amazon Music, see your calendar, browse and listen to Audible audiobooks, and more. Personalize your Spot with a collection of clock faces to suit your style or set a photo background from Prime Photos. Plus, make calls to friends and family or make video calls to anyone with an Echo Spot, Echo Show, or the Alexa App.\nEcho Spot features far-field technology with four microphones, beamforming technology, and enhanced noise cancellation, so it can hear you from across the room-even while music is playing.",
+     "categoryId" : "04"
+    },
+    "mp9": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51vL5SQbwaL.jpg",
+      "name" : "TCL 55S405 55-Inch 4K Ultra HD Roku Smart LED TV",
+      "price" : "$369.99",
+      "description" : "The S-Series 4K TCL Roku TV delivers stunning picture performance while bringing all your favorite content through a simple, intuitive interface in a sleek modern design.",
+     "categoryId" : "01"
+    }
+  },
+  "SuggestedItems" : {
+    "si1": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/91Ki8WRsNJL._SL1500_.jpg",
+      "name" : "Apple MacBook Pro 13\"",
+     "price" : "$1,599.99",
+     "description" : "The new MacBook Pro is razor-thin, featherlight, and now even faster and more powerful than before. It has the brightest, most colorful Mac notebook display. And it has the revolutionary Touch Bar—a Multi-Touch–enabled strip of glass built into the keyboard for instant access to what you want to do, when you want to do it. The new MacBook Pro is built on groundbreaking ideas. And it’s ready for yours.",
+     "categoryId" : "01"
+    },
+    "si2": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/41S8wx4-QOL.jpg",
+      "name" : "Anker USB Type-C Premium 5-Port 60W USB Wall Charger ",
+      "price" : "$49.99",
+      "description" : "This premium 5-port charger is equipped with three distinct fast-charging technologies. It offers unbeatable charging power, superior safety and an appearance that perfectly complements your phones, tablets and laptops.",
+     "categoryId" : "04"
+    },
+    "si3": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/418be5MYSjL._AC_US218_.jpg",
+      "name" : "GoPro HERO5 Session",
+      "price" : "$199.99",
+      "description" : "Capture different with HERO5 Session. With its stunning 4K video, one-button simplicity and voice control, HERO5 Session may be the ultimate combination of performance and small size. Liquid-smooth image stabilization, waterproof design and go-anywhere durability help capture life as you live it. And when it’s time to edit and share, HERO5 Session can automatically upload footage to your GoPro Plus cloud account, providing easy access on your phone. Then you can use Quik, the GoPro editing app, to automatically create videos that wow. HERO5 Session—your life, from a new perspective.",
+     "categoryId" : "01"
+    },
+    "si4": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51pp-vr-cyL._SL1000_.jpg",
+      "name" : "Apple Watch Series 3",
+      "price" : "$329.99",
+      "description" : "Answer a call from your surfboard. Ask Siri to send a message. Stream your favorite songs on your run. And do it all while leaving your phone behind. Introducing Apple Watch Series 3 with cellular. Now you have the freedom to go with just your watch.",
+     "categoryId" : "01"
+    },
+    "si5": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/91d053F2aKL._SL1500_.jpg",
+      "name" : "The Office: The Complete Series",
+      "price" : "$36.99",
+      "description" : "A favorite of critics and audiences alike, The Office is a hilarious documentary-style look at the humorous and sometimes poignant foolishness that plagues the 9-to-5 world. For the first time, all nine seasons are together in one complete set - so you can relive every one of your favorite moments, including Michael's (Steve Carell) infamous encounter with a breakfast grill, Dwight's (Rainn Wilson) power plays, Jim's (John Krasinksi) pranks, Andy's (Ed Helms) struggles with anger management, and of course, Pam (Jenna Fischer) and Jim's evolving romance. Also includes special appearances by Amy Adams, Kathy Bates, Rashida Jones, Amy Ryan, James Spader and more. Developed for American television by Primetime Emmy-award winner Greg Daniels, The Office: The Complete Series includes all 201 episodes on 38 discs that you can watch back-to-back and uninterrupted - plus bonus commentaries, webisodes, blooper reels and over 15 hours of deleted scenes that are guaranteed to leave you satisfied and smiling. That's what she said!",
+     "categoryId" : "05"
+    },
+    "si6": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/71qVCKw7XGL._SL1500_.jpg",
+      "name" : "Foscam Outdoor Security Bullet Camera",
+      "price" : "$69.99",
+      "description" : "You know what you need from a WiFi security camera: to ensure the safety of your home, children, pets, or business. You want the ability to stay connected to what you care about: to live monitor or record what's happening, perhaps with the aid of scheduling functions or maybe through simple but powerful motion trigger and smart alert features. You also need the recordings to be smooth and clear so that the footage is truly useful, and so you don't have to struggle to discern the details of a scene. You want the features you need at the highest quality, without extras you don't need. In other words, you want full choice over your recording method (HDD/NVR/Cloud), and you want to spend only for what fulfills your needs.\nWith the FI9800PR, you'll enjoy rich HD securely broadcast with dual-stream and H.264 compression to optimize bandwidth usage on your network. Intelligent motion alerts provide accurate realtime monitoring. Clear digital zoom provides a closeup on small details. Powerful IR-LEDs provide night vision up to 65ft. Wide 75° angle keeps the action in-frame. Camera includes free app (iOS/Android) and supports IEEE 802.11n 2G band WiFi and dual system backup. Versus any IP camera, WiFI wireless security camera system, or CCTV home security camera system, the FI9800PR is a classic cornerstone of professional quality + value in the home monitoring and CCTV industries, now upgraded with 2017 firmware and an extra long power cable for more convenient placement (note: this is an outdoor camera, but we have indoor security camera models such as the Foscam R2)."
+    },
+    "si7": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51J%2B9jPZ2aL._SL1000_.jpg",
+      "name" : "AKASO Alarm Clock, Radio Alarm Clock",
+      "price" : "$31.99",
+      "description" : "The AKASO alarm clock features a 5 levels 3.2\"x1.6\" large easy-to-read LCD that displays time and temperature clearly. Just press the rotary button and change into the suitable brightness you need and easy readability during the day or at night. The dual alarm clock allows for two seperate wake times while snooze affords you a few extra minutes of sleep. Also, the alarm volume is adjustable by the rotary button to meet your various. Built in 2 USB charging ports with built-in Surge Protection, make for a safe & fast charging your mobile phone, iPad, etc. guaranteeing that you wake up knowing that both you and your handheld device are fully charged.",
+     "categoryId" : "04"
+    },
+    "si8": {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51lCOgocEtL._SX522_.jpg",
+      "name" : "Wazor Professional Hair Dryer 1875W Negative Ionic Blow Dryer",
+      "price" : "$39.98",
+      "description" : "It can deliver the powerful wind, and concentrate the wind. This hair dryer is lighter than any other professional blow dryer, and it’s much better for salon and home use. The repair and smooth generate 100x more negative ionic than any other ionic dryer on the market, resulting in softer, healthier hair with less static. Cool shot releases cool air to lock-in the style easily and quickly, 2 speed and 3 heating settings let you drying and styling flexibility.",
+     "categoryId" : "04"
+    },
+    "si9": {
+      "image" : "http://www.wigglestatic.com/product-media/100211243/Under-Armour-Women-s-ColdGear-Reactor-Graphic-Gym-Legging-Internal-Black-AW17-1298227-001XS.jpg?w=1200&h=1200&a=7",
+      "name" : "Under Armour Women's ColdGear Legging",
+      "price" : "$50.70",
+      "description" : "Dual-layer EVO ColdGear construction combines a soft, brushed interior & a sleek, smooth exterior. Ribbed side panels. Signature Moisture Transport System wicks sweat to keep you dry & light. Lightweight, 4-way stretch construction improves mobility & maintains shape. Wide, flat waistband with internal word mark. Ergonomic seaming detail. Hidden waist pocket to stash your stuff. 28\" inseam with shaped hem.",
+     "categoryId" : "03"
+    }
+  },
+  "Categories" : {
+    "01" :{
+      "Name" : "Electronics"
+    },
+    "02" : {
+      "Name" : "Video Games"
+    },
+    "03" : {
+      "Name" : "Clothing"
+    },
+    "04" : {
+      "Name" : "Household"
+    },
+    "05" : {
+      "Name" : "Entertainment"
+    },
+    "06" : {
+      "Name" : "Books"
+    }
+  },
+  "Electronics" : {
+   "01" : {
+     "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5721/5721724_sa.jpg;maxHeight=333;maxWidth=333",
+     "name" : "Apple MacBook Pro 13\"",
+     "price" : "$1,599.99",
+     "description" : "The new MacBook Pro is razor-thin, featherlight, and now even faster and more powerful than before. It has the brightest, most colorful Mac notebook display. And it has the revolutionary Touch Bar—a Multi-Touch–enabled strip of glass built into the keyboard for instant access to what you want to do, when you want to do it. The new MacBook Pro is built on groundbreaking ideas. And it’s ready for yours.",
+     "categoryId" : "01"
+   },
+    "02" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5706/5706644_ra.jpg;maxHeight=333;maxWidth=333",
+      "name" : "Apple Watch Series 3",
+      "price" : "$329.00",
+      "description" : "Measure your workouts, from running and cycling to new high-intensity interval training. Track and share your daily activity, and get the motivation you need to hit your goals. Better manage everyday stress and monitor your heart rate more effectively. Automatically sync your favorite playlists. And stay connected to the people and info you care about most.",
+      "categoryId" : "01"
+   },
+    "03" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5621/5621780_sa.jpg;maxHeight=333;maxWidth=333",
+      "name" : "DJI Mavic Pro Quadcopter",
+       "price" : "$999.99",
+       "description" : "Capture aerial views smoothly in Ultra HD with this DJI Mavic Pro camera drone. Its FlightAutonomy technology uses ultrasonic range finders and vision sensors to proactively detect and avoid obstacles for safer, obstruction-free flight. This compact and foldable DJI Mavic Pro camera drone has a 7km transmission range thanks to its FCC-compliant remote controller.",
+       "categoryId" : "01"
+   },
+    "04" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5876/5876110_sa.jpg;maxHeight=333;maxWidth=333",
+      "name" : "Bose SoundSport Free Wireless Headphones",
+       "price" : "$199.99",
+       "description" : "Demanding workouts demand SoundSport® Free wireless headphones. They’re completely free of wires, so you’ll enjoy complete freedom of movement. They’re sweat and weather resistant, too. Bose® StayHear®+ Sport tips are designed to stay secure and comfortable all workout long. And the earbuds are packed full of technology that makes your music sound so clear and powerful, you’ll push past your limits.",
+       "categoryId" : "01"
+   },
+    "05" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5916/5916203_ra.jpg;maxHeight=333;maxWidth=333",
+      "name" : "Dyson Supersonic Hair Dryer",
+       "price" : "$399.99",
+       "description" : "Simplify your morning routine with this Dyson Supersonic hair dryer. The digital motor is housed in the handle for better balance, and the precise airflow allows simultaneous styling and drying. Intelligent heat control technology on this Dyson Supersonic hair dryer measures air temperature 20 times per second to protect against extreme heat damage.",
+       "categoryId" : "01"
+   }
+  },
+  "Video Games" : {
+    "01" : {
+     "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6103/6103914_sa.jpg;maxHeight=145;maxWidth=222",
+     "name" : "Resident Evil 7 Biohazard Gold Edition",
+     "price" : "$44.99",
+     "description" : "Delve into a classic world with Resident Evil 7 Biohazard: Gold Edition for the PlayStation 4. You play as Chris to survive the latest outbreak and take out new enemies that pop up in swamp-filled areas. Resident Evil 7 Biohazard: Gold Edition includes two new games to increase play options.",
+     "categoryId" : "02"
+   },
+    "02" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6163/6163994_sa.jpg;maxHeight=145;maxWidth=222",
+      "name" : "MLB The Show 18 Standard Edition",
+      "price" : "$59.99",
+      "description" : "Pick up a bat and enter a world of home runs and heroic catches with MLB The Show 18 for PlayStation 4. The next iteration of the classic baseball favorite, this authentic game recreates stadiums from classic to modern to add to the realistic experience. Control an entire team or choose a favorite player in MLB The Show 18.",
+      "categoryId" : "02"
+   },
+    "03" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5921/5921801_sa.jpg;maxHeight=145;maxWidth=222",
+      "name" : "Fortnite",
+       "price" : "$59.99",
+       "description" : "Create a refuge from the storm in Fortnite for the Xbox One. You find and rescue survivors that can help you take on the monsters, and you craft weapons from whatever you find to give you an advantage. Explore the world of Fortnite and wreak havoc on the destructible landscape.",
+       "categoryId" : "02"
+   },
+    "04" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5909/5909502_sa.jpg;maxHeight=145;maxWidth=222",
+      "name" : "Assassin's Creed Origins",
+       "price" : "$59.99",
+       "description" : "Ancient Egypt – home of colossal pyramids, gilded tombs, tyrannical god-kings, and the origin story of the Assassins. \nAs Cleopatra’s empire crumbles, the birth of the Assassin's Brotherhood will lead to an extraordinary shift of the world order. Along your journey, the mysteries of Ancient Egypt will be revealed. \nAssassin’s Creed® Origins uncovers the beginning of the Brotherhood. Fight in epic battles, master a completely reinvented combat system, and explore the entirety of Egypt. With the all-new quest system, complete missions in any order you choose, and follow your own path to greatness.",
+       "categoryId" : "02"
+   }
+  },
+  "Clothing" : {
+    "01" : {
+     "image" : "https://images-na.ssl-images-amazon.com/images/I/817yxE-Yp-L._SL500_SR106,135_.jpg",
+     "name" : "KomPrexx Mens Sports T-Shirts Short Sleeve Training Tee Shirt Breathable Athletic T-Shirt",
+     "price" : "$12.49",
+     "description" : "100% Polyester\nUltraviolet-proof\nLightweight\nBreathable\nQuick dry\nSmooth",
+     "categoryId" : "03"
+   },
+    "02" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51yrPov90-L._AC_UL260_SR200,260_.jpg",
+      "name" : "Men’s Slim-Fit Plaid Twill Shirt",
+      "price" : "$30.00",
+      "description" : "100% Cotton\nImported\nMachine Wash\nThis weekend-perfect casual button-front shirt in a plaid twill fabric features a special wash for a soft feel and maximum comfort and double button-\nthrough chest pockets\nRounded hem, single-button barrel cuffs\nSlim fit: closer-fitting in the chest, slightly tapered through the waist for a tailored look\nOur Slim Fit is comparable to slim-fit shirts from J.Crew and Banana Republic; if you like the fit of Van Heusen brand shirts, size up",
+      "categoryId" : "03"
+   },
+    "03" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51amUzqh7FL._AC_UL260_SR200,260_.jpg",
+      "name" : "Qlassic Women Casual Long Sleeve Round Neck Sweatshirt Loose T Shirt Blouses Tops",
+       "price" : "$12.99",
+       "description" : "Soft Material - 100% Polyester Spandex, Comfortable Thin Lightweight Pullover Sweathshirts\nImported\nPull On closure\nDesign: Round Neckline / Baggy / Pocket in Side / Comfy and easy to slip on Tunic Sweatshirts Loose Solid top with Long Sleeves\nSide Pocket - With 2 Pockets, So you can easy to put small kits,like keys, mobilephone in your pockets when doing exercise,also this is perfect to match leggings, jeans, shorts\nStylish Cute Sweatshirts - This is a very comfortable sweatshirt.it is very soft and comfortable and it looks really cute with leggings or jeans.The quality of materials and design are top notch as well as seaming and stitching",
+       "categoryId" : "03"
+   },
+    "04" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/81kzZ83lhlL._AC_UL200_SR154,200_.jpg",
+      "name" : "Faddare Womens Long Sleeve Lightweight Activewear Seamless Hoodie Sweatshirt",
+       "price" : "$18.99",
+       "description" : "Fabric - 95% Low Elastic Yarn 5% Spandex, smoth, lightweight and comfy against the skin,you will love it when you are doing exercise\nSpace Dye Thin Sweatshirt - The Hooded Pullover is featuring with Scoop Neckline / Long Sleeve / Hits at Hip Length / Loose Fit Activewear Yoga Sweatshirts for Workout\nSeamless Hoodie - Engineered knit with reduced seaming, not too thick, and not too thin it is light and comfy enough for all seasons,from spring to autumn ,even in winter you can wear it indoor outdoor\nMust Have Activewear for Women - Faddare sports lightweight hood is easy shape that flatters your curves loosely without clinging or too baggy, you deserve to have this wonderful exercise shirts\nGarment Care - Easy to clean ,machine or hand wash is available, hang dry, generally there is no special care for it",
+       "categoryId" : "03"
+   } 
+  },
+  "Household" : {
+    "01" : {
+     "image" : "https://images-na.ssl-images-amazon.com/images/I/51EQMb-ZsDL._AC_US218_.jpg",
+     "name" : "DEWALT DCS391B 20-Volt MAX Li-Ion Circular Saw",
+     "price" : "$99.00",
+     "description" : "The DEWALT DCS391B 20V MAX 6-1/2\" Circular Saw features a powerful 460 MWO, 5250 RPM motor that delivers power and speed to make the most demanding cuts with ease. A high strength and lightweight magnesium shoe provides jobsite durability for long-term cut accuracy, and an optimized rubber overmolded comfort grip delivers optimal balance and control. The 0Degree-50Degree bevel capacity allows for aggressive bevel cuts for a multitude of applications, along with the 6-1/2\" carbide tipped blade for cutting 2x material at 90Degree and 45Degree and more cuts per charge. No load speed: 5250 rpm, Arbor size: 5/8\", Depth of cut at 45Degree: 1-5/8\", Depth of cut at 90Degree: 2-1/4\". Includes: DCS391 6-1/2\" Circular Saw, 6-1/2\" Carbide-tipped Blade. This is a bare tool item (battery sold separately).",
+     "categoryId" : "04"
+   },
+    "02" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/41N3htNY2jL._AC_US218_.jpg",
+      "name" : "Smarter SMKET01-US Electric iKettle",
+      "price" : "$149.99",
+      "description" : "The latest edition of the iKettle is possible to prepare your hot beverages easily via your smartphone. Control the iKettle remotely via the Smarter app available for download on iOS and Android devices. Use the Smarter app to select a specific temperature between 68-212 degrees F to suit your needs. This Smarter iKettle has a range of modes like Wake Up, Home and Formula modes to heat water at a specified time, so it's ready when you are. The latest edition now even connects to Amazon Alexa and Google Assistant-enabled devices so you can pop the iKettle on using voice commands.",
+      "categoryId" : "04"
+   },
+    "03" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/31PltTXuGRL._AC_SR201,266_.jpg",
+      "name" : "Dyson Cinetic Big Ball Animal Vacuum",
+       "price" : "$229.50",
+       "description" : "Unlike all other vacuums, this one doesn't lose suction. It's because of the new, revolutionary Dyson Cinetic science - it captures the dust that clogs others. It doesn't have any dirty filters to wash or replace. And it has whole-machine HEPA filtration. There's also a tangle-free Turbine tool to remove dirt and hair from carpets and upholstery.",
+       "categoryId" : "04"
+   },
+    "04" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/61z0Flx0L2L._SY450_.jpg",
+      "name" : "Nest Learning Thermostat",
+       "price" : "$226.49",
+       "description" : "The Nest Learning Thermostat is here to help make your home work for you. Using smart learning technology, the Nest Learning Thermostat can learn what you like and automatically adjust itself to your comfort level. After a couple of days of manual adjustments, the Nest Learning Thermostat can anticipate when you would want to turn the temperature up, to help keep you cozy in the morning, and set the temperature down as you head to bed. The Thermostat also works in combination with your Nest Cellphone App. Remotely change the temperature so that your house can be warm when you come home or, turn the temperature down to save energy while you're away. The Nest Thermostat is just one part of your heating and cooling system. But it can keep an eye on the rest of it. You’ll get an alert on your phone if there’s something wrong – like temperatures are so low your pipes could burst. And if it looks like your furnace is acting up, the Nest Thermostat will send you an alert. Nest is focused on making simple, human, delightful things. That’s how we’re creating the thoughtful home: A home that takes care of the people inside it and the world around it.",
+       "categoryId" : "04"
+   } 
+  },
+  "Entertainment" : {
+    "01" : {
+     "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6182/6182931_sa.jpg;maxHeight=145;maxWidth=222",
+     "name" : "Archer: Season 8 (DVD)",
+     "price" : "$14.99",
+     "description" : "Archer is an FXX animated comedy based on spy/private eye Sterling Archer who, this season, attempts to find his partner's killer in 1947 L.A.",
+     "categoryId" : "05"
+   },
+    "02" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6152/6152900_sa.jpg;maxHeight=145;maxWidth=222",
+      "name" : "Justice League [Blu-ray/DVD]",
+      "price" : "$24.99",
+      "description" : "In the wake of Superman's death, Batman (Ben Affleck) and Wonder Woman (Gal Gadot) recruit superpowered individuals to defend humanity from an otherworldly threat called Steppenwolf (Ciarán Hinds). Together with their new allies -- Cyborg (Ray Fisher), Aquaman (Jason Momoa), and the Flash (Ezra Miller) -- they form the superhero team known as the Justice League.",
+      "categoryId" : "05"
+   },
+    "03" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6123/6123206_sa.jpg;maxHeight=145;maxWidth=222",
+      "name" : "4eva Is a Mighty Long Time [CD]",
+       "price" : "$13.99",
+       "description" : "Following a successful run on Def Jam resulting in two albums that topped Billboard's Rap and R&B album charts, Mississippi rapper Big K.R.I.T. struck out on his own with his third proper full-length, which appeared on his own Multi Alumni label. The double album is by far his most personal work -- not for nothing does he title the first song \"Big K.R.I.T.\" and another one \"Justin Scott,\" his real name. He maintains complete creative control here, and is far more concerned with crafting something made to last than chasing trends. This is soul-searching Southern rap steeped in the tradition of OutKast, UGK (who guest on \"Ride wit Me\"), and David Banner, with gospel, funk, and the blues providing the backbone. The arrangements are filled with luscious guitars and soulful organ, sounding soothing and comforting without being too laid-back. The album isn't without its hard moments, however, and the first disc is filled with trunk-rattling bangers like \"Subenstein (My Sub IV).\" K.R.I.T. takes a lot of stylistic chances here, particularly on the album's more experimental second disc, but they always sound natural and honest. \"Justin Scott\" is a dose of Isaac Hayes-inspired orchestral soul, with strings and vintage funk synths providing a bed for the choir vocals. K.R.I.T. knows how out of time this sounds, and he ends the track with a playful outro filled with voices pestering him to make something more radio-friendly, but it's obvious that he's making what's in his heart. \"Aux Cord\" is a winning, creative throwback jam, with shoutouts to everyone from B.B. King to Parliament to Raphael Saadiq. \"Price of Fame\" is the album's most moving song, reflecting on severe depression and the downside of success. Even deeper into the album, \"Drinking Sessions\" and \"The Light\" are spiritual soul-jazz excursions with fluid drums and dusky horns, as well as introspective lyrics. 4eva Is a Mighty Long Time is a mighty long album, at 20 songs and two brief skits, but K.R.I.T. clearly has a lot to say, and he expresses it with vigor and passion on this ambitious work.",
+       "categoryId" : "05"
+   },
+    "04" : {
+      "image" : "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5850/5850802_sa.jpg;maxHeight=145;maxWidth=222",
+      "name" : "DAMN. [CD]",
+       "price" : "$13.99",
+       "description" : "To Pimp a Butterfly's proper and oft-biblical follow-up arrived on Good Friday, 13 months after untitled unmastered., an intermediary release that eclipsed the best work of most contemporary artists. If Kendrick Lamar felt pressure to continue living up to his previous output, there's no evidence on DAMN. He's too occupied tracing the spectrum of his mental states, from \"boxin' demons\" to \"flex on swole,\" questioning and reveling in his affluence, castigating and celebrating his bloodline, humble enough to relate his vulnerabilities, assured enough to proclaim \"Ain't none of y'all fuckin' with the flow.\" Throughout, he intensely examines most of the seven deadly sins, aware all along that his existence is threatened by anyone who objects to the color of his skin or clothes -- or, in the case of the blind stranger who shoots him during the album's opener, nothing that is apparent. Compared to the maximum-capacity, genre-twisting vastness and winding narratives of Good Kid, M.A.A.D. City and To Pimp a Butterfly, DAMN. on the surface seems like a comparatively simple rap album that demands less from the listener. There's relative concision in the track titles and material, and a greater emphasis on commercial sounds -- such as Mike WiLL's lean and piano-laced trap beat for the strong-arming \"HUMBLE.,\" Lamar's first Top Ten pop hit, and a couple productions that are merely functional backdrops lacking distinction. In a way, however, DAMN. is just as lavish and singular as the preceding albums, its quantity and weight of thoughts and connected concepts condensed into a considerably tighter space. It contains some of Lamar's best writing and performances, revealing his evolving complexity and versatility as a soul-baring lyricist and dynamic rapper. Although it's occasionally distorted, stretched, smeared, and reversed to compelling and imagination-fueling effect, his voice is at its most affecting in its many untreated forms. Take \"FEAR.,\" in which he switches between echoing hot-blooded parental threats to enumerating, with a 40-acre stare, various death scenarios. His storytelling hits an astonishing new high on \"Duckworth,\" the album's finale. Over ethereal funk sewn by 9th Wonder, Lamar details a potentially tragic encounter between his father and future Top Dawg CEO Anthony Tiffith -- and the conditions leading to it -- that occurred long before Kung Fu Kenny was known as K. Dot.",
+       "categoryId" : "05"
+   } 
+  },
+  "Books" : {
+    "01" : {
+     "image" : "https://images-na.ssl-images-amazon.com/images/I/51Fk8SWwlLL._AC_US218_.jpg",
+     "name" : "Ready Player One: A Novel",
+     "price" : "$8.79",
+     "description" : "In the year 2045, reality is an ugly place. The only time teenage Wade Watts really feels alive is when he's jacked into the virtual utopia known as the OASIS. Wade's devoted his life to studying the puzzles hidden within this world's digital confines—puzzles that are based on their creator's obsession with the pop culture of decades past and that promise massive power and fortune to whoever can unlock them.\nBut when Wade stumbles upon the first clue, he finds himself beset by players willing to kill to take this ultimate prize. The race is on, and if Wade's going to survive, he'll have to win—and confront the real world he's always been so desperate to escape.",
+     "categoryId" : "06"
+   },
+    "02" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/41cSJI7PfHL._AC_SR201,266_.jpg",
+      "name" : "Gone Girl",
+      "price" : "$9.49",
+      "description" : "On a warm summer morning in North Carthage, Missouri, it is Nick and Amy Dunne’s fifth wedding anniversary. Presents are being wrapped and reservations are being made when Nick’s clever and beautiful wife disappears. Husband-of-the-Year Nick isn’t doing himself any favors with cringe-worthy daydreams about the slope and shape of his wife’s head, but passages from Amy's diary reveal the alpha-girl perfectionist could have put anyone dangerously on edge. Under mounting pressure from the police and the media—as well as Amy’s fiercely doting parents—the town golden boy parades an endless series of lies, deceits, and inappropriate behavior. Nick is oddly evasive, and he’s definitely bitter—but is he really a killer?",
+      "categoryId" : "06"
+   },
+    "03" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/51KzcuZMlzL._AC_SR201,266_.jpg",
+      "name" : "A Game of Thrones (A Song of Ice and Fire, Book 1)",
+       "price" : "$6.29",
+       "description" : "From a master of contemporary fantasy comes the first novel of a landmark series unlike any you’ve ever read before. With A Game of Thrones, George R. R. Martin has launched a genuine masterpiece, bringing together the best the genre has to offer. Mystery, intrigue, romance, and adventure fill the pages of this magnificent saga, the first volume in an epic series sure to delight fantasy fans everywhere.",
+       "categoryId" : "06"
+   },
+    "04" : {
+      "image" : "https://images-na.ssl-images-amazon.com/images/I/81GcOE3jVsL._AC_SR201,266_.jpg",
+      "name" : "The Goldfinch: A Novel",
+       "price" : "$16.16",
+       "description" : "Theo Decker, a 13-year-old New Yorker, miraculously survives an accident that kills his mother. Abandoned by his father, Theo is taken in by the family of a wealthy friend. Bewildered by his strange new home on Park Avenue, disturbed by schoolmates who don't know how to talk to him, and tormented above all by his longing for his mother, he clings to the one thing that reminds him of her: a small, mysteriously captivating painting that ultimately draws Theo into the underworld of art.\nAs an adult, Theo moves silkily between the drawing rooms of the rich and the dusty labyrinth of an antiques store where he works. He is alienated and in love--and at the center of a narrowing, ever more dangerous circle.\nThe Goldfinch is a mesmerizing, stay-up-all-night and tell-all-your-friends triumph, an old-fashioned story of loss and obsession, survival and self-invention, and the ruthless machinations of fate.",
+       "categoryId" : "06"
+   } 
+  }
+
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black"
+            android:title="Home"/>
+        <item
+            android:id="@+id/nav_acctinfo"
+            android:icon="@drawable/ic_account_circle_black"
+            android:title="Account Info"/>
+        <item
+            android:id="@+id/nav_categories"
+            android:icon="@drawable/ic_assignment_black"
+            android:title="Categories"/>
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help_black"
+            android:title="Help"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit_to_app_black"
+            android:title="Logout"/>
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_exit_to_app_black"
+            android:title="Log In"/>
+        <item
+            android:id="@+id/create_acct_btn"
+            android:icon="@drawable/ic_account_circle_black"
+            android:title="Create Acount!"/>
+    </group>
+
+</menu>

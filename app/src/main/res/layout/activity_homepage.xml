@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:background="@color/primary_bg"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/app_bar_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_bg"
+        tools:context="com.qnally.shappapp.Homepage">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="675dp"
+            android:layout_marginEnd="440dp"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/AppTheme.PopupOverlay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_dehaze_black"
+            app:popupTheme="@style/Theme.AppCompat.NoActionBar"/>
+
+        <ImageView
+            android:id="@+id/circlegrouplogo"
+            android:layout_width="68dp"
+            android:layout_height="17dp"
+            android:layout_marginBottom="800dp"
+            android:layout_marginEnd="146dp"
+            android:layout_marginStart="146dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/circle_group"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="263dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="750dp"
+            android:layout_marginEnd="49dp"
+            android:layout_marginStart="49dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/md_white_1000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/circlegrouplogo"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="750dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/ic_shopping_cart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/search_bar"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/mostpopicon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="520dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="150dp"
+            android:src="@drawable/group"
+            app:layout_constraintBottom_toTopOf="@+id/firstscrollsnap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/mostpop"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="150dp"
+            android:fontFamily="@font/montserrat"
+            android:letterSpacing="0.03"
+            android:text="Most Popular"
+            android:textColor="#000000"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/mostpopicon"
+            app:layout_constraintEnd_toStartOf="@+id/firstscrollsnap"
+            app:layout_constraintStart_toEndOf="@+id/mostpopicon"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/firstscrollsnap"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="480dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="150dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:msrv_gravity="start"/>
+
+        <ImageView
+            android:id="@+id/categoriesicon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="440dp"
+            android:layout_marginEnd="520dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/group_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstscrollsnap"/>
+
+        <TextView
+            android:id="@+id/categ"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="460dp"
+            android:layout_marginEnd="400dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:letterSpacing="0.03"
+            android:text="Categories"
+            android:textColor="#000000"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/categoriesicon"
+            app:layout_constraintTop_toBottomOf="@+id/firstscrollsnap"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/primarycard"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="300dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="80dp"
+            android:orientation="horizontal"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstscrollsnap">
+
+            <ImageButton
+                android:id="@+id/elecbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/electronics"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/firstcard"
+            android:layout_width="160dp"
+            android:layout_height="75dp"
+            android:layout_marginEnd="200dp"
+            android:layout_marginTop="57dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/primarycard"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/vgbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/video_games"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/seccard"
+            android:layout_width="160dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="270dp"
+            android:layout_marginEnd="192dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintStart_toEndOf="@id/primarycard"
+            app:layout_constraintTop_toBottomOf="@id/firstcard"
+            app:layout_constraintVertical_bias="0.219">
+
+            <ImageButton
+                android:id="@+id/bookbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/books"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/thrdcard"
+            android:layout_width="160dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="303dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/firstcard"
+            app:layout_constraintTop_toBottomOf="@id/firstscrollsnap">
+
+            <ImageButton
+                android:id="@+id/clothbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/clothing"/>
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/seemore"
+            android:layout_width="160dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="290dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/primary_bg"
+            android:fontFamily="@font/montserrat"
+            android:text="See All"
+            android:typeface="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/seccard"
+            app:layout_constraintTop_toBottomOf="@id/thrdcard"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
+        <ImageView
+            android:id="@+id/suggesticon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="236dp"
+            android:layout_marginEnd="520dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/group_4_copy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/primarycard"
+            app:layout_constraintVertical_bias="0.318"/>
+
+        <TextView
+            android:id="@+id/suggested"
+            android:layout_width="191dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="220dp"
+            android:layout_marginEnd="350dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:letterSpacing="0.03"
+            android:text="Suggested Items"
+            android:textColor="#000000"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/suggesticon"
+            app:layout_constraintTop_toBottomOf="@+id/primarycard"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/secscrollsnap"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="480dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="500dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/primarycard"
+            app:msrv_gravity="start"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:background="@color/md_black_1000"
+        app:itemTextColor="@color/md_white_1000"
+        app:itemIconTint="@color/md_white_1000"
+        app:headerLayout="@layout/nav_header_drawer"
+        app:menu="@menu/activity_drawer_drawer"/>
+
+
+
+</android.support.v4.widget.DrawerLayout>
