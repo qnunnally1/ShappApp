@@ -28,8 +28,8 @@ import com.seatgeek.placesautocomplete.model.AddressComponent;
 import com.seatgeek.placesautocomplete.model.AddressComponentType;
 import com.seatgeek.placesautocomplete.model.Place;
 import com.seatgeek.placesautocomplete.model.PlaceDetails;
-import com.stripe.android.model.Card;
-import com.stripe.android.view.CardMultilineWidget;
+//import com.stripe.android.model.Card;
+//import com.stripe.android.view.CardMultilineWidget;
 
 
 public class RegistrationPayment extends AppCompatActivity implements OnCardFormSubmitListener,

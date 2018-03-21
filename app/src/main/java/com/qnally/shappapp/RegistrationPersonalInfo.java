@@ -1,5 +1,6 @@
 package com.qnally.shappapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.qnally.shappapp.Common.Common;
+import com.qnally.shappapp.Model.Customer;
 import com.seatgeek.placesautocomplete.DetailsCallback;
 import com.seatgeek.placesautocomplete.OnPlaceSelectedListener;
 import com.seatgeek.placesautocomplete.PlacesAutocompleteTextView;
@@ -28,10 +37,10 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
 
     Toolbar toolbar;
     PlacesAutocompleteTextView address;
-    EditText firstname, lastname, email, phone;
+    EditText firstname, lastname, email, password, password_verify;
     TextView city, state, zip;
-    Button nextbtn;
-    Intent topayment;
+    Button signup;
+    Intent tohome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,62 +62,16 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
         firstname = (EditText) findViewById(R.id.first_name_form);
         lastname = (EditText) findViewById(R.id.last_name_form);
         email = (EditText) findViewById(R.id.email);
-        phone = (EditText) findViewById(R.id.phone_number);
-        city = (TextView) findViewById(R.id.city);
-        state = (TextView) findViewById(R.id.state);
-        zip = (TextView) findViewById(R.id.zip);
+        password = (EditText) findViewById(R.id.password_form);
+        password_verify = (EditText) findViewById(R.id.password_verify_form);
 
-        address = (PlacesAutocompleteTextView) findViewById(R.id.billing_address_autocomplete);
-        address.setOnPlaceSelectedListener(new OnPlaceSelectedListener() {
-            @Override
-            public void onPlaceSelected(final Place place) {
-                address.getDetailsFor(place, new DetailsCallback() {
-                    @Override
-                    public void onSuccess(PlaceDetails placeDetails) {
-                        address.setText(placeDetails.name);
-                        for (AddressComponent component : placeDetails.address_components) {
-                            for (AddressComponentType type : component.types) {
-                                switch (type) {
-                                    case STREET_NUMBER:
-                                        break;
-                                    case ROUTE:
-                                        break;
-                                    case NEIGHBORHOOD:
-                                        break;
-                                    case SUBLOCALITY_LEVEL_1:
-                                        break;
-                                    case SUBLOCALITY:
-                                        break;
-                                    case LOCALITY:
-                                        city.setText(component.long_name);
-                                        break;
-                                    case ADMINISTRATIVE_AREA_LEVEL_1:
-                                        state.setText(component.short_name);
-                                        break;
-                                    case ADMINISTRATIVE_AREA_LEVEL_2:
-                                        break;
-                                    case COUNTRY:
-                                        break;
-                                    case POSTAL_CODE:
-                                        zip.setText(component.long_name);
-                                        break;
-                                    case POLITICAL:
-                                        break;
-                                }
-                            }
-                        }
-                        address.dismissDropDown();
-                    }
+        //Init Firebase
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference table_customer = database.getReference("Customer");
 
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        Log.d("test", "failure " + throwable);
-                    }
-                });
-            }
-        });
 
-        //format phone number input as user inputs phone information
+
+        /*//format phone number input as user inputs phone information
         phone.addTextChangedListener(new TextWatcher() {
 
             int keyDel;
@@ -144,52 +107,50 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        });*/
 
-        nextbtn = (Button) findViewById(R.id.next_btn);
-        nextbtn.setOnClickListener(new View.OnClickListener() {
+        signup = (Button) findViewById(R.id.next_btn);
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                check();
+                final ProgressDialog mDialog = new ProgressDialog(RegistrationPersonalInfo.this);
+                mDialog.show();
 
-                if(firstname.getText().toString().equals("")){
-                    firstname.setHintTextColor(Color.RED);
-                    firstname.setHint("Enter first name!");
-                }
-                if(lastname.getText().toString().equals("")){
-                    lastname.setHintTextColor(Color.RED);
-                    lastname.setHint("Enter last name!");
-                }
-                if(address.getText().toString().equals("")){
-                    address.setHintTextColor(Color.RED);
-                    address.setHint("Enter address!");
-                }
-                if(city.getText().toString().equals("")){
-                    city.setHintTextColor(Color.RED);
-                    city.setHint("Enter address!");
-                }
-                if(state.getText().toString().equals("")){
-                    state.setHintTextColor(Color.RED);
-                    state.setHint("Enter address!");
-                }
-                if(zip.getText().toString().equals("")){
-                    zip.setHintTextColor(Color.RED);
-                    zip.setHint("Enter address!");
-                }
-                if(email.getText().toString().equals("")){
-                    email.setHintTextColor(Color.RED);
-                    email.setHint("Enter email!");
-                }
-                if(phone.getText().toString().equals("")){
-                    phone.setHintTextColor(Color.RED);
-                    phone.setHint("Enter phone number!");
-                }
+                if(!firstname.getText().toString().equals("") && !lastname.getText().toString().equals("")
+                        && !email.getText().toString().equals("") && !password.getText().toString().equals("")
+                        && !password.getText().toString().equals("")
+                        && !password_verify.getText().toString().equals("")){
 
-                if(!firstname.getText().toString().equals("") && !lastname.getText().toString().equals("") && !address.getText().toString().equals("")
-                        && !city.getText().toString().equals("") && !state.getText().toString().equals("") && !zip.getText().toString().equals("")
-                        && !email.getText().toString().equals("") && !phone.getText().toString().equals(""))
-                {
-                    topayment = new Intent(getApplicationContext(),RegistrationPayment.class);
-                    startActivity(topayment);
+                    table_customer.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            String email2string = email.getText().toString().replace(".com","");
+
+                            if(dataSnapshot.child(email2string).exists()){
+                                mDialog.dismiss();
+                                Toast.makeText(RegistrationPersonalInfo.this, "Email already exists", Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                mDialog.dismiss();
+                                Customer customer = new Customer(firstname.getText().toString(),lastname.getText().toString(),password.getText().toString(),email2string);
+                                table_customer.child(email2string).setValue(customer);
+                                finish();
+                                tohome = new Intent(getApplicationContext(), Homepage.class);
+                                Common.current = customer;
+                                startActivity(tohome);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+                else{
+                    check();
                 }
             }
         });
@@ -201,34 +162,27 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        // Save UI state changes to the savedInstanceState.
-        // This bundle will be passed to onCreate if the process is
-        // killed and restarted.
-        savedInstanceState.putString("First Name", firstname.getText().toString());
-        savedInstanceState.putString("Last Name", lastname.getText().toString());
-        savedInstanceState.putString("Street Address", address.getText().toString());
-        savedInstanceState.putString("City", city.getText().toString());
-        savedInstanceState.putString("State", state.getText().toString());
-        savedInstanceState.putString("Zip Code", zip.getText().toString());
-        savedInstanceState.putString("Email", email.getText().toString());
-        savedInstanceState.putString("Phone", phone.getText().toString());
-    }
+    public void check(){
 
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        // Restore UI state from the savedInstanceState.
-        // This bundle has also been passed to onCreate.
-        String myfirstname = savedInstanceState.getString("First Name");
-        String mylastname = savedInstanceState.getString("Last Name");
-        String myaddress = savedInstanceState.getString("Street Address");
-        String mycity = savedInstanceState.getString("City");
-        String mystate = savedInstanceState.getString("State");
-        String myzip = savedInstanceState.getString("Zip Code");
-        String myemail = savedInstanceState.getString("Email");
-        String myphone = savedInstanceState.getString("Phone");
+        if(firstname.getText().toString().equals("")){
+            firstname.setHintTextColor(Color.RED);
+            firstname.setHint("Enter first name");
+        }
+        if(lastname.getText().toString().equals("")) {
+            lastname.setHintTextColor(Color.RED);
+            lastname.setHint("Enter last name");
+        }
+        if(email.getText().toString().equals("")){
+            email.setHintTextColor(Color.RED);
+            email.setHint("Enter email");
+        }
+        if(password.getText().toString().equals("")){
+            password.setHintTextColor(Color.RED);
+            password.setHint("Enter password");
+        }
+        if(password_verify.getText().toString().equals("")){
+            password_verify.setHintTextColor(Color.RED);
+            password_verify.setHint("Re-enter password");
+        }
     }
 }

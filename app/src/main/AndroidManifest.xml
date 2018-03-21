@@ -22,7 +22,9 @@
         </activity>
         <activity
             android:name=".Login"
-            android:windowSoftInputMode="stateHidden">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true">
         </activity>
 
         <meta-data
@@ -32,14 +34,29 @@
         <activity
             android:name=".RegistrationPersonalInfo"
             android:parentActivityName=".Login"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Login"/>
         </activity>
-        <activity android:name=".RegistrationPayment"
-                  android:parentActivityName=".RegistrationPersonalInfo"
-                  android:windowSoftInputMode="stateHidden">
+        <activity
+            android:name=".RegistrationPayment"
+            android:parentActivityName=".RegistrationPersonalInfo"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity
+            android:name=".Homepage"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ItemList"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:name=".ItemActivity">
         </activity>
     </application>
 

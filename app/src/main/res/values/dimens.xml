@@ -12,8 +12,18 @@
     <dimen name="btn_height">126dp</dimen>
     <dimen name="form_txt_width">390dp</dimen>
     <dimen name="form_txt_height">45dp</dimen>
+    <dimen name="lrg_form_txt_height">65dp</dimen>
     <dimen name="start_padding">15dp</dimen>
     <dimen name="top_padding">10dp</dimen>
     <dimen name="end_padding">2dp</dimen>
     <dimen name="close_btn_padding">7dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <item name="normal_speed" type="dimen" format="float">100</item>
+    <item name="high_speed" type="dimen" format="float">50</item>
+    <item name="low_speed" type="dimen" format="float">120</item>
 </resources>

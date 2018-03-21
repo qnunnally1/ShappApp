@@ -27,11 +27,12 @@
         android:id="@+id/email_field"
         android:layout_width="@dimen/email_field_width"
         android:layout_height="@dimen/email_field_height"
-        android:layout_marginBottom="410dp"
+        android:layout_marginBottom="450dp"
         android:layout_marginEnd="19dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="348dp"
         android:background="@drawable/email"
+        android:cursorVisible="false"
         android:ems="10"
         android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
@@ -40,18 +41,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:cursorVisible="false"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/passwdField"
         android:layout_width="@dimen/passwd_field_height"
         android:layout_height="@dimen/passwd_field_width"
-        android:layout_marginBottom="349dp"
+        android:layout_marginBottom="387dp"
         android:layout_marginEnd="19dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="409dp"
         android:background="@drawable/password"
+        android:cursorVisible="false"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
         android:paddingEnd="2dp"
@@ -59,8 +60,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:cursorVisible="false"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
         android:id="@+id/skip_button"
