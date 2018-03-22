@@ -23,7 +23,7 @@
         <activity
             android:name=".Login"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
+            android:windowSoftInputMode="stateHidden">
             android:noHistory="true">
         </activity>
 
@@ -39,6 +39,12 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Login"/>
+
+            <intent-filter>
+                <action android:name="com.qnally.shappapp.RegistrationPersonalInfo"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".RegistrationPayment"
@@ -50,13 +56,43 @@
             android:name=".Homepage"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.qnally.shappapp.Homepage"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".ItemList"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="com.qnally.shappapp.ItemList"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <activity android:name=".ItemActivity">
+        </activity>
+        <activity
+            android:name=".ItemPage"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.qnally.shappapp.ItemPage"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".cart_list"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.qnally.shappapp.cart_list"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".AllCategories">
         </activity>
     </application>
 

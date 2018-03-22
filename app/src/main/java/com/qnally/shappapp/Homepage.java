@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +30,7 @@ import com.qnally.shappapp.Adapter.SuggestedAdapter;
 import com.qnally.shappapp.Common.Common;
 import com.qnally.shappapp.Model.MostPopularItems;
 import com.qnally.shappapp.Model.SuggestedItems;
+import com.qnally.shappapp.Notifications.CartNotification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +50,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
     RecyclerView.LayoutManager layman1, layman2;
 
     ImageButton elec, clothing, books, videogames;
-    Button seemore;
+    Button add2c, seemore;
     NavigationView navigationView;
 
     @Override
@@ -102,6 +104,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         clothing = (ImageButton) findViewById(R.id.clothbtn);
         books = (ImageButton) findViewById(R.id.bookbtn);
         videogames = (ImageButton) findViewById(R.id.vgbtn);
+        add2c = (Button) findViewById(R.id.button);
         seemore = (Button) findViewById(R.id.seemore);
 
         //electronics
@@ -148,7 +151,15 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         seemore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent vgList = new Intent(Homepage.this, AllCategories.class);
+                startActivity(vgList);
+            }
+        });
 
+        add2c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Homepage.this, cart_list.class));
             }
         });
 
@@ -205,25 +216,48 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_home) {
+            Intent goToHomepage= new Intent("com.qnally.shappapp.Homepage");
+            startActivity(goToHomepage);
 
         } else if (id == R.id.nav_acctinfo) {
 
         } else if (id == R.id.nav_categories) {
+            //Intent goToCategories= new Intent("com.qnally.shappapp.ItemList");
+            //startActivity(goToCategories);
 
         } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_logout) {
+            Common.current=null;
+            Intent goToHomepage= new Intent("com.qnally.shappapp.Homepage");
+            startActivity(goToHomepage);
+            Toast.makeText(Homepage.this,"You have been logged out",Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.nav_login) {
+            //Intent goToLoginPage= new Intent();
+            startActivity(new Intent(Homepage.this, Login.class));
 
         } else if (id == R.id.create_acct_btn) {
-
+            Intent goToRegistrationPage= new Intent("com.qnally.shappapp.RegistrationPersonalInfo");
+            startActivity(goToRegistrationPage);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /*@Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Get the notifications MenuItem and
+        // its LayerDrawable (layer-list)
+        MenuItem item = menu.findItem(R.id.button);
+        CartNotification.setAddToCart(Homepage.this, item,notificationCountCart);
+        // force the ActionBar to relayout its MenuItems.
+        // onCreateOptionsMenu(Menu) will be called again.
+        invalidateOptionsMenu();
+        return super.onPrepareOptionsMenu(menu);
+    }*/
 
     /*
     Navigation drawer will be closed on pressing back button while it

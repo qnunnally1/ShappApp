@@ -1,19 +1,19 @@
 package com.qnally.shappapp.ViewHolder;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.qnally.shappapp.Interface.ItemClickListener;
+import com.qnally.shappapp.Interface.OnItemClickListener;
 import com.qnally.shappapp.R;
 
-public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class ItemViewHolder extends RecyclerView.ViewHolder{
 
     public ImageView image;
-    public TextView title, price;
-
-    private ItemClickListener mItemClickListener;
+    public TextView title, price, description;
+    public CardView card;
 
     public ItemViewHolder(View itemView) {
         super(itemView);
@@ -21,21 +21,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         image = (ImageView)itemView.findViewById(R.id.item_img);
         title = (TextView) itemView.findViewById(R.id.item_title);
         price = (TextView) itemView.findViewById(R.id.item_price);
-
-        itemView.setOnClickListener(this);
-    }
-
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        mItemClickListener = itemClickListener;
-    }
-
-    public void setImage(ImageView image) {
-        this.image = image;
-    }
-
-    @Override
-    public void onClick(View v) {
-        mItemClickListener.OnClick(v, getAdapterPosition(), false);
-
+        description = (TextView) itemView.findViewById(R.id.item_details);
+        card = (CardView) itemView.findViewById(R.id.card);
     }
 }

@@ -5,7 +5,10 @@
     android:id="@+id/card"
     android:layout_width="220dp"
     android:layout_height="300dp"
+    android:layout_gravity="center"
     android:layout_margin="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     cardview:cardCornerRadius="5dp">
     
     <LinearLayout
@@ -22,7 +25,7 @@
             android:layout_gravity="center"/>
 
         <TextView
-            android:id="@+id/item_title"
+            android:id="@+id/list_title"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:textSize="18sp"
@@ -32,14 +35,22 @@
             android:text="Product"/>
 
         <TextView
-            android:id="@+id/item_price"
+            android:id="@+id/list_price"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:textSize="18sp"
             android:textColor="#2d2d2d"
             android:background="@color/cardview_light_background"
             android:gravity="center"
             android:text="$1500"/>
+
+        <!--<Button
+            android:id="@+id/list_add2c"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Add to Cart"
+            android:textSize="18sp"
+            android:background="@color/shapp_blue_text"/>-->
 
     </LinearLayout>
 
