@@ -9,40 +9,18 @@
     tools:context="com.qnally.shappapp.RegistrationPayment">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="90dp"
-        android:paddingTop="@dimen/close_btn_padding"
-        app:layout_constraintBottom_toTopOf="@+id/card_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:navigationIcon="@drawable/arrow">
-    </android.support.v7.widget.Toolbar>
-
-    <ImageView
-        android:id="@+id/circlelogo"
-        android:layout_width="152dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="26dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/app_logo"
-        android:src="@drawable/circle_group"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    android:id="@+id/payment_toolbar"
+    android:layout_width="match_parent"
+    app:popupTheme="@style/AppTheme.PopupOverlay"
+    android:background="@color/primary_bg"
+    android:layout_height="?attr/actionBarSize"
+    app:layout_collapseMode="pin"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="313dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="636dp"
+        android:layout_marginBottom="730dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="23dp"
         android:layout_marginTop="8dp"
@@ -57,43 +35,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/card_name_form"
-        android:layout_width="@dimen/form_txt_width"
-        android:layout_height="@dimen/form_txt_height"
-        android:layout_marginBottom="580dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/first_name"
-        android:cursorVisible="false"
-        android:fontFamily="@font/varela_round"
-        android:hint="@string/name_on_card_hint"
-        android:paddingEnd="@dimen/end_padding"
-        android:paddingStart="@dimen/start_padding"
-        android:textColor="@color/shapp_blue_text"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_2"
-        />
-
-    <com.stripe.android.view.CardInputWidget
-        android:id="@+id/card_2"
+    <com.devmarvel.creditcardentry.library.CreditCardForm
+        android:id="@+id/crdt_info"
         android:layout_width="@dimen/form_txt_width"
         android:layout_height="@dimen/form_txt_height"
         android:layout_marginBottom="530dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/first_name"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/formbx"
+        app:text_color="@color/shapp_blue_text"
+        android:paddingTop="7dp"
         android:paddingStart="@dimen/start_padding"
         android:paddingEnd="@dimen/end_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:include_zip="false"
+        app:include_helper="false"/>
 
     <CheckBox
         android:id="@+id/billing_chkbx"
@@ -107,10 +66,9 @@
         android:fontFamily="@font/varela_round"
         android:text="@string/same_billing_address"
         android:textColor="@color/shapp_blue_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/payment_state"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_name_form"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
         android:id="@+id/billing_address_autocomplete"
@@ -119,134 +77,187 @@
         android:layout_marginBottom="237dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/first_name"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/formbx"
         android:fontFamily="@font/varela_round"
         android:hint="@string/billing_address_txt"
         android:paddingEnd="@dimen/end_padding"
         android:paddingStart="@dimen/start_padding"
         android:textColor="@color/shapp_blue_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/billing_chkbx"
         app:layout_constraintVertical_bias="0.046"
+        app:layout_constraintTop_toBottomOf="@id/crdt_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:pacv_googleMapsApiKey="@string/autocomplete_key"/>
 
     <TextView
-        android:id="@+id/city"
+        android:id="@+id/payment_zip"
         android:layout_width="@dimen/form_txt_width"
         android:layout_height="@dimen/form_txt_height"
-        android:layout_marginBottom="445dp"
+        android:background="@drawable/formbx"
+        app:layout_constraintTop_toBottomOf="@id/billing_address_autocomplete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingStart="@dimen/start_padding"
+        android:paddingEnd="@dimen/end_padding"
+        android:fontFamily="@font/varela_round"
+        android:textColor="@color/shapp_blue_text"
+        android:textSize="18sp"
+        android:hint="@string/zipcode_hint"
+        />
+
+    <TextView
+        android:id="@+id/payment_city"
+        android:layout_width="@dimen/form_txt_width"
+        android:layout_height="@dimen/form_txt_height"
+        android:background="@drawable/formbx"
+        app:layout_constraintTop_toBottomOf="@id/payment_zip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingStart="@dimen/start_padding"
+        android:paddingEnd="@dimen/end_padding"
+        android:fontFamily="@font/varela_round"
+        android:textColor="@color/shapp_blue_text"
+        android:textSize="18sp"
+        android:hint="@string/city_hint"
+        />
+
+    <TextView
+        android:id="@+id/payment_state"
+        android:layout_width="@dimen/form_txt_width"
+        android:layout_height="@dimen/form_txt_height"
+        android:background="@drawable/formbx"
+        app:layout_constraintTop_toBottomOf="@id/payment_city"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingStart="@dimen/start_padding"
+        android:paddingEnd="@dimen/end_padding"
+        android:fontFamily="@font/varela_round"
+        android:textColor="@color/shapp_blue_text"
+        android:textSize="18sp"
+        android:hint="@string/state_hint"
+        />
+
+    <com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
+        android:id="@+id/address_autocomplete"
+        android:layout_width="@dimen/form_txt_width"
+        android:layout_height="@dimen/form_txt_height"
+        android:layout_marginBottom="237dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/first_name"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/formbx"
         android:fontFamily="@font/varela_round"
-        android:hint="@string/city_hint"
+        android:hint="@string/address_hint"
         android:paddingEnd="@dimen/end_padding"
         android:paddingStart="@dimen/start_padding"
-        android:paddingTop="@dimen/top_padding"
-        android:textAlignment="viewStart"
         android:textColor="@color/shapp_blue_text"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.046"
+        app:layout_constraintTop_toBottomOf="@id/billing_chkbx"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/billing_address_autocomplete"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:pacv_googleMapsApiKey="@string/autocomplete_key"/>
 
     <TextView
-        android:id="@+id/state"
+        android:id="@+id/add_zip"
         android:layout_width="@dimen/form_txt_width"
         android:layout_height="@dimen/form_txt_height"
-        android:layout_marginBottom="385dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/first_name"
-        android:fontFamily="@font/varela_round"
-        android:hint="@string/state_hint"
-        android:paddingEnd="@dimen/end_padding"
+        android:background="@drawable/formbx"
+        app:layout_constraintTop_toBottomOf="@id/address_autocomplete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
         android:paddingStart="@dimen/start_padding"
-        android:paddingTop="@dimen/top_padding"
-        android:textAlignment="viewStart"
+        android:paddingEnd="@dimen/end_padding"
+        android:fontFamily="@font/varela_round"
         android:textColor="@color/shapp_blue_text"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/city"/>
-
-    <TextView
-        android:id="@+id/zip"
-        android:layout_width="@dimen/form_txt_width"
-        android:layout_height="@dimen/form_txt_height"
-        android:layout_marginBottom="330dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/first_name"
-        android:fontFamily="@font/varela_round"
         android:hint="@string/zipcode_hint"
-        android:paddingEnd="@dimen/end_padding"
-        android:paddingStart="@dimen/start_padding"
-        android:paddingTop="@dimen/top_padding"
-        android:textAlignment="viewStart"
-        android:textColor="@color/shapp_blue_text"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/state"/>
+        />
 
     <TextView
-        android:id="@+id/terms_condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="900dp"
+        android:id="@+id/add_city"
+        android:layout_width="@dimen/form_txt_width"
+        android:layout_height="@dimen/form_txt_height"
+        android:background="@drawable/formbx"
+        app:layout_constraintTop_toBottomOf="@id/add_zip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingStart="@dimen/start_padding"
+        android:paddingEnd="@dimen/end_padding"
         android:fontFamily="@font/varela_round"
-        android:text="@string/terms_condition"
-        android:textAlignment="center"
-        android:textColor="@color/gray_txt"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/create_acct_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"/>
+        android:textColor="@color/shapp_blue_text"
+        android:textSize="18sp"
+        android:hint="@string/city_hint"
+        />
 
-    <Button
-        android:id="@+id/terms_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/primary_bg"
+    <TextView
+        android:id="@+id/add_state"
+        android:layout_width="@dimen/form_txt_width"
+        android:layout_height="@dimen/form_txt_height"
+        android:background="@drawable/formbx"
+        app:layout_constraintTop_toBottomOf="@id/add_city"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingStart="@dimen/start_padding"
+        android:paddingEnd="@dimen/end_padding"
         android:fontFamily="@font/varela_round"
-        android:text="@string/terms_link"
-        android:textAllCaps="false"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        style="?android:attr/borderlessButtonStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/terms_condition"/>
+        android:textColor="@color/shapp_blue_text"
+        android:textSize="18sp"
+        android:hint="@string/state_hint"
+        />
 
-    <Button
-        android:id="@+id/create_acct_btn"
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="@dimen/btn_height"
-        android:layout_marginBottom="87dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="577dp"
-        android:background="@drawable/sign_in_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:layout_above="@id/completeOrder">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total: "
+                android:textSize="24sp"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/total"
+                android:text="$0.00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="24sp"/>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/completeOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Complete Order"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:background="@color/shapp_blue_text"
+            />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

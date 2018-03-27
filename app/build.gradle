@@ -25,6 +25,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:12.0.0'
     compile 'com.google.firebase:firebase-core:12.0.0'
     compile 'com.google.firebase:firebase-database:12.0.0'
+    compile 'com.squareup.retrofit2:retrofit:2.4.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.4.0'
+    compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    compile 'com.cepheuen.elegant-number-button:lib:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -33,6 +37,7 @@ dependencies {
     //compile 'com.craftman.cardform:cardform:0.0.2'
     //compile 'com.stripe:stripe-android:6.1.1'
     compile 'com.braintreepayments:card-form:3.2.1-SNAPSHOT'
+    compile 'com.github.dbachelder:CreditCardEntry:1.4.7'
     implementation("com.mikepenz:materialdrawer:6.0.6@aar") {
         transitive = true
         exclude group: 'com.android.support'
@@ -61,8 +66,9 @@ dependencies {
 
 repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-
+    maven { url "https://jitpack.io" }
 }
+
 
 
 

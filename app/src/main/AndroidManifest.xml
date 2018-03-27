@@ -94,6 +94,8 @@
         </activity>
         <activity android:name=".AllCategories">
         </activity>
+        <activity android:name=".SearchedList">
+        </activity>
     </application>
 
 </manifest>

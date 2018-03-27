@@ -21,6 +21,12 @@ import com.braintreepayments.cardform.utils.CardType;
 import com.braintreepayments.cardform.view.CardEditText;
 import com.braintreepayments.cardform.view.CardForm;
 import com.braintreepayments.cardform.view.SupportedCardTypesView;
+import com.devmarvel.creditcardentry.library.CreditCardForm;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.qnally.shappapp.Database.Database;
+import com.qnally.shappapp.Model.Order;
+import com.qnally.shappapp.Model.PlacedOrder;
 import com.seatgeek.placesautocomplete.DetailsCallback;
 import com.seatgeek.placesautocomplete.OnPlaceSelectedListener;
 import com.seatgeek.placesautocomplete.PlacesAutocompleteTextView;
@@ -28,34 +34,39 @@ import com.seatgeek.placesautocomplete.model.AddressComponent;
 import com.seatgeek.placesautocomplete.model.AddressComponentType;
 import com.seatgeek.placesautocomplete.model.Place;
 import com.seatgeek.placesautocomplete.model.PlaceDetails;
+
+import java.util.List;
 //import com.stripe.android.model.Card;
 //import com.stripe.android.view.CardMultilineWidget;
 
 
-public class RegistrationPayment extends AppCompatActivity implements OnCardFormSubmitListener,
-        CardEditText.OnCardTypeChangedListener{
+public class RegistrationPayment extends AppCompatActivity{
 
-    private static final CardType[] SUPPORTED_CARD_TYPES = { CardType.VISA, CardType.MASTERCARD, CardType.DISCOVER,
-            CardType.AMEX};
-
-    private SupportedCardTypesView mSupportedCardTypesView;
-    protected CardForm mCardForm;
+    private CreditCardForm form;
 
     Toolbar toolbar;
     PlacesAutocompleteTextView billing_address;
     EditText card_name;
     TextView bcity, bstate, bzip;
-    Button create;
-    Intent create_account;
+    Button completeOrder;
+    Intent complete;
     CheckBox bill_check;
+
+    FirebaseDatabase mDatabase;
+    DatabaseReference mReference;
+
+    String name = "", email = "", city = "", zip = "", state = "", address = "", total = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_payment);
 
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference("Orders");
+
         //setting up toolbar to give option to close if registration is not completed
-        toolbar = (Toolbar) findViewById (R.id.toolbar);
+        toolbar = (Toolbar) findViewById (R.id.payment_toolbar);
         setSupportActionBar(toolbar);
 
         //setting up navigation button to go back
@@ -67,10 +78,10 @@ public class RegistrationPayment extends AppCompatActivity implements OnCardForm
 
         //set up views to declare with autocomplete
         billing_address = (PlacesAutocompleteTextView) findViewById(R.id.billing_address_autocomplete);
-        bcity = (TextView) findViewById(R.id.city);
-        bstate = (TextView) findViewById(R.id.state);
-        bzip = (TextView) findViewById(R.id.zip);
-        card_name = (EditText) findViewById(R.id.card_name_form);
+        bcity = (TextView) findViewById(R.id.payment_city);
+        bstate = (TextView) findViewById(R.id.payment_state);
+        bzip = (TextView) findViewById(R.id.payment_zip);
+        form = (CreditCardForm) findViewById(R.id.crdt_info);
 
         billing_address.setOnPlaceSelectedListener(new OnPlaceSelectedListener() {
             @Override
@@ -139,62 +150,35 @@ public class RegistrationPayment extends AppCompatActivity implements OnCardForm
             }
         });
 
-        create = (Button) findViewById(R.id.create_acct_btn);
-        create.setOnClickListener(new View.OnClickListener() {
+        Intent intent = getIntent();
+        name = (intent.getExtras().getString("First Name") + intent.getExtras().getString("Last Name"));
+        email = intent.getExtras().getString("Email");
+        total = intent.getExtras().getString("Total");
+        address = billing_address.getText().toString();
+        city = bcity.getText().toString();
+        state = bstate.getText().toString();
+        zip = bzip.getText().toString();
+
+
+        completeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean info_filled = false;
+                PlacedOrder order = new PlacedOrder(
+                        name,
+                        email,
+                        address + ", " + city + ", " + state +  ", " + zip,
+                        total,
+                        ((List<Order>) getIntent().getExtras().getSerializable("Order"))
+                );
 
-                /*if(mCardForm.getCardNumber().equals("") || mCardForm.getExpirationMonth().equals("") || mCardForm.getCvv().equals("")){
-                    mCardForm.setCardNumberError("Enter card information!");
-                }*/
-                if(card_name.getText().toString().equals("")){
-                    card_name.setHintTextColor(Color.RED);
-                    card_name.setHint("Enter card name!");
-                }
-                if(!bill_check.isChecked() && (billing_address.getText().toString().equals("") || bcity.getText().toString().equals("")
-                    || bstate.getText().toString().equals("") || bzip.getText().toString().equals(""))){
-                    billing_address.setHintTextColor(Color.RED);
-                    billing_address.setHint("Enter billing address!");
-                }
+                mReference.child(String.valueOf(System.currentTimeMillis())).setValue(order);
 
-                if((bill_check.isChecked())){
-                    if(!card_name.getText().toString().equals("")){
-                        info_filled = true;
-                    }
-                }else{
-                    if(!card_name.getText().toString().equals("") && !billing_address.getText().toString().equals("") && bcity.getText().toString().equals("")
-                            && !bstate.getText().toString().equals("") && !bzip.getText().toString().equals("")){
-                        info_filled = true;
-                    }
-                }
-
-                if(info_filled) {
-                    create_account = new Intent(getApplicationContext(), RegistrationPayment.class);
-                    startActivity(create_account);
-                }
+                new Database(getBaseContext()).cleanCart();
+                Toast.makeText(RegistrationPayment.this, "Thank you! You order has been placed.", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
-    }
 
-
-    @Override
-    public void onCardTypeChanged(CardType cardType) {
-        if (cardType == CardType.EMPTY) {
-            mSupportedCardTypesView.setSupportedCardTypes(SUPPORTED_CARD_TYPES);
-        } else {
-            mSupportedCardTypesView.setSelected(cardType);
-        }
-    }
-
-    @Override
-    public void onCardFormSubmit() {
-        if (mCardForm.isValid()) {
-            Toast.makeText(this, R.string.valid, Toast.LENGTH_SHORT).show();
-        } else {
-            mCardForm.validate();
-            Toast.makeText(this, R.string.invalid, Toast.LENGTH_SHORT).show();
-        }
     }
 
 }

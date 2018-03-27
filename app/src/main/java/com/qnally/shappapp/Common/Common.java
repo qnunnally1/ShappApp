@@ -8,5 +8,4 @@ import java.util.List;
 // class that will save current user
 public class Common {
     public static Customer current;
-    public static List<Item> currentItems;
 }
