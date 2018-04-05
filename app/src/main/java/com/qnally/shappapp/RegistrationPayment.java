@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,6 +26,7 @@ import com.braintreepayments.cardform.view.SupportedCardTypesView;
 import com.devmarvel.creditcardentry.library.CreditCardForm;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.qnally.shappapp.Common.Common;
 import com.qnally.shappapp.Database.Database;
 import com.qnally.shappapp.Model.BillingAddress;
 import com.qnally.shappapp.Model.Order;
@@ -99,6 +101,7 @@ public class RegistrationPayment extends AppCompatActivity{
         totalPrice = (TextView) findViewById(R.id.total);
         totalPrice.setText(getIntent().getStringExtra("Total"));
 
+
         billing_address.setOnPlaceSelectedListener(new OnPlaceSelectedListener() {
             @Override
             public void onPlaceSelected(final Place place) {
@@ -150,6 +153,56 @@ public class RegistrationPayment extends AppCompatActivity{
         ba = new BillingAddress(billing_address.getText().toString(), bcity.getText().toString(),
                 bstate.getText().toString(), bzip.getText().toString());
 
+        Common.current.setBa(ba);
+
+        ship_address.setOnPlaceSelectedListener(new OnPlaceSelectedListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+                ship_address.getDetailsFor(place, new DetailsCallback() {
+                    @Override
+                    public void onSuccess(PlaceDetails placeDetails) {
+                        ship_address.setText(placeDetails.name);
+                        for (AddressComponent component : placeDetails.address_components) {
+                            for (AddressComponentType type : component.types) {
+                                switch (type) {
+                                    case STREET_NUMBER:
+                                        break;
+                                    case ROUTE:
+                                        break;
+                                    case NEIGHBORHOOD:
+                                        break;
+                                    case SUBLOCALITY_LEVEL_1:
+                                        break;
+                                    case SUBLOCALITY:
+                                        break;
+                                    case LOCALITY:
+                                        ship_city.setText(component.long_name);
+                                        break;
+                                    case ADMINISTRATIVE_AREA_LEVEL_1:
+                                        ship_state.setText(component.short_name);
+                                        break;
+                                    case ADMINISTRATIVE_AREA_LEVEL_2:
+                                        break;
+                                    case COUNTRY:
+                                        break;
+                                    case POSTAL_CODE:
+                                        ship_zip.setText(component.long_name);
+                                        break;
+                                    case POLITICAL:
+                                        break;
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        Log.d("test", "failure " + throwable);
+                    }
+                });
+            }
+        });
+
         //setting up checkbox to use same billing address used in prior registration
         bill_check = (CheckBox) findViewById(R.id.billing_chkbx);
         bill_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -163,65 +216,21 @@ public class RegistrationPayment extends AppCompatActivity{
 
                     sa = new ShippingAddress(billing_address.getText().toString(), bcity.getText().toString(),
                             bstate.getText().toString(), bzip.getText().toString());
+
+                    Common.current.setSa(sa);
                 }else{
                     ship_address.setVisibility(View.VISIBLE);
                     ship_city.setVisibility(View.VISIBLE);
                     ship_state.setVisibility(View.VISIBLE);
                     ship_zip.setVisibility(View.VISIBLE);
-
-                    ship_address.setOnPlaceSelectedListener(new OnPlaceSelectedListener() {
-                        @Override
-                        public void onPlaceSelected(@NonNull Place place) {
-                            ship_address.getDetailsFor(place, new DetailsCallback() {
-                                @Override
-                                public void onSuccess(PlaceDetails placeDetails) {
-                                    ship_address.setText(placeDetails.name);
-                                    for (AddressComponent component : placeDetails.address_components) {
-                                        for (AddressComponentType type : component.types) {
-                                            switch (type) {
-                                                case STREET_NUMBER:
-                                                    break;
-                                                case ROUTE:
-                                                    break;
-                                                case NEIGHBORHOOD:
-                                                    break;
-                                                case SUBLOCALITY_LEVEL_1:
-                                                    break;
-                                                case SUBLOCALITY:
-                                                    break;
-                                                case LOCALITY:
-                                                    ship_city.setText(component.long_name);
-                                                    break;
-                                                case ADMINISTRATIVE_AREA_LEVEL_1:
-                                                    ship_state.setText(component.short_name);
-                                                    break;
-                                                case ADMINISTRATIVE_AREA_LEVEL_2:
-                                                    break;
-                                                case COUNTRY:
-                                                    break;
-                                                case POSTAL_CODE:
-                                                    ship_zip.setText(component.long_name);
-                                                    break;
-                                                case POLITICAL:
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Throwable throwable) {
-                                    Log.d("test", "failure " + throwable);
-                                }
-                            });
-                        }
-                    });
                 }
             }
         });
 
         sa = new ShippingAddress(ship_address.getText().toString(), ship_city.getText().toString(),
                 ship_state.getText().toString(), ship_zip.getText().toString());
+
+        Common.current.setSa(sa);
 
         Intent intent = getIntent();
         name = (intent.getExtras().getString("First Name") + intent.getExtras().getString("Last Name"));
@@ -231,10 +240,14 @@ public class RegistrationPayment extends AppCompatActivity{
         state = bstate.getText().toString();
         zip = bzip.getText().toString();
 
-
         completeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                check();
+
+                String cred = form.getCreditCard().getCardNumber();
+                Common.current.setCreditcard(cred);
+
                 Date date = new Date();
                 SimpleDateFormat dateFormatter = new SimpleDateFormat("MMMM d, yyyy");
                 String orderDate = dateFormatter.format(date);
@@ -255,9 +268,68 @@ public class RegistrationPayment extends AppCompatActivity{
                 new Database(getBaseContext()).cleanCart();
                 Toast.makeText(RegistrationPayment.this, "Thank you! You order has been placed.", Toast.LENGTH_SHORT).show();
                 finish();
+                startActivity(new Intent(RegistrationPayment.this, Homepage.class));
             }
         });
+    }
 
+    private void check() {
+            if(bcity.getText().toString().equals("")){
+                bcity.setHintTextColor(Color.RED);
+                bcity.setHint("Enter address");
+            }
+            if(bcity.getText().toString().equals("")){
+                bcity.setHintTextColor(Color.RED);
+                bcity.setHint("Enter address");
+            }
+            if(bstate.getText().toString().equals("")) {
+                bstate.setHintTextColor(Color.RED);
+                bstate.setHint("Enter address");
+            }
+            if(bzip.getText().toString().equals("")){
+                bzip.setHintTextColor(Color.RED);
+                bzip.setHint("Enter address");
+            }
+            if(!bill_check.isChecked()){
+
+                if(ship_address.getText().toString().equals("")) {
+                    ship_address.setHintTextColor(Color.RED);
+                    ship_address.setHint("Enter address");
+                }
+                if(ship_city.getText().toString().equals("")){
+                    ship_city.setHintTextColor(Color.RED);
+                    ship_city.setHint("Enter address");
+                }
+                if(ship_state.getText().toString().equals("")) {
+                    ship_state.setHintTextColor(Color.RED);
+                    ship_state.setHint("Enter address");
+                }
+                if(ship_zip.getText().toString().equals("")){
+                    ship_zip.setHintTextColor(Color.RED);
+                    ship_zip.setHint("Enter address");
+                }
+            }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_cart) {
+            startActivity(new Intent(RegistrationPayment.this, cart_list.class));
+            return true;
+        } else if ( id == R.id.action_home) {
+            startActivity(new Intent(RegistrationPayment.this, Homepage.class));
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -68,8 +68,8 @@ public class Customer {
         this.ba = ba;
     }
 
-    public ShippingAddress getSa() {
-        return sa;
+    public String getSa() {
+        return sa.getFullAddress();
     }
 
     public void setSa(ShippingAddress sa) {

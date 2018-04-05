@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.qnally.shappapp.Common.Common;
+import com.qnally.shappapp.Database.Database;
 import com.qnally.shappapp.Model.Customer;
 
 import java.util.Timer;
@@ -81,7 +82,9 @@ public class Login extends AppCompatActivity{
                             if (cust != null) {
                                 if (cust.getPassword().equals(usrpasswd.getText().toString())) {
                                     tohomepage = new Intent(getApplicationContext(), Homepage.class);
-                                    Common.current = cust;
+                                    Customer cust2 = new Customer(cust.getFirst_name(), cust.getLast_name(), cust.getPassword(), email2string);
+                                    Common.current = cust2;
+                                    new Database(getBaseContext()).cleanCart();
                                     startActivity(tohomepage);
                                     finish();
                                 } else {
@@ -119,7 +122,7 @@ public class Login extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 skipSignIn();
-
+                Common.current = null;
                 tohomepage = new Intent(getApplicationContext(), Homepage.class);
                 startActivity(tohomepage);
             }
