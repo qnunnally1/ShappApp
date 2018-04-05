@@ -24,9 +24,17 @@
         android:background="@color/primary_bg"
         tools:context="com.qnally.shappapp.Homepage">
 
-        <android.support.v7.widget.Toolbar
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:background="@color/primary_bg"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"
+        app:navigationIcon="@drawable/ic_dehaze_black"/>
+
+        <!--<android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="675dp"
             android:layout_marginEnd="440dp"
@@ -37,23 +45,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_dehaze_black"
-            app:popupTheme="@style/Theme.AppCompat.NoActionBar"/>
+            app:popupTheme="@style/Theme.AppCompat.NoActionBar"/>-->
 
         <ImageView
             android:id="@+id/circlegrouplogo"
             android:layout_width="68dp"
             android:layout_height="17dp"
-            android:layout_marginBottom="800dp"
+            android:layout_marginBottom="830dp"
             android:layout_marginEnd="146dp"
             android:layout_marginStart="146dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:src="@drawable/circle_group"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <SearchView
+        <!--<SearchView
             android:id="@+id/search_bar"
             android:layout_width="263dp"
             android:layout_height="36dp"
@@ -65,9 +73,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/circlegrouplogo"/>
+            app:layout_constraintTop_toTopOf="@+id/circlegrouplogo"/>-->
 
-        <Button
+        <!--<Button
             android:id="@+id/button"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -79,21 +87,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/search_bar"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"/>-->
 
-        <ImageView
-            android:id="@+id/mostpopicon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="520dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="150dp"
-            android:src="@drawable/group"
-            app:layout_constraintBottom_toTopOf="@+id/firstscrollsnap"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/mostpopicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="520dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/mostpop"
@@ -102,7 +108,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginEnd="1dp"
             android:layout_marginStart="200dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="70dp"
             android:fontFamily="@font/montserrat"
             android:letterSpacing="0.03"
             android:text="Most Popular"
@@ -113,29 +119,27 @@
             app:layout_constraintStart_toEndOf="@+id/mostpopicon"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/firstscrollsnap"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_marginBottom="480dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="150dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:msrv_gravity="start"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/firstscrollsnap"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginBottom="550dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:msrv_gravity="start"/>
 
         <ImageView
             android:id="@+id/categoriesicon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="440dp"
+            android:layout_marginBottom="480dp"
             android:layout_marginEnd="520dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/group_4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,10 +150,10 @@
             android:id="@+id/categ"
             android:layout_width="135dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="460dp"
+            android:layout_marginBottom="500dp"
             android:layout_marginEnd="400dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/montserrat"
             android:letterSpacing="0.03"
             android:text="Categories"
@@ -164,10 +168,10 @@
             android:id="@+id/primarycard"
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:layout_marginBottom="300dp"
+            android:layout_marginBottom="350dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="100dp"
             android:orientation="horizontal"
             app:cardCornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -189,7 +193,8 @@
             android:layout_width="160dp"
             android:layout_height="75dp"
             android:layout_marginEnd="200dp"
-            android:layout_marginTop="57dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
             app:cardCornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -208,7 +213,7 @@
             android:id="@+id/seccard"
             android:layout_width="160dp"
             android:layout_height="75dp"
-            android:layout_marginBottom="270dp"
+            android:layout_marginBottom="300dp"
             android:layout_marginEnd="192dp"
             app:cardCornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -230,7 +235,7 @@
             android:id="@+id/thrdcard"
             android:layout_width="160dp"
             android:layout_height="75dp"
-            android:layout_marginBottom="303dp"
+            android:layout_marginBottom="330dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -250,7 +255,7 @@
             android:id="@+id/seemore"
             android:layout_width="160dp"
             android:layout_height="75dp"
-            android:layout_marginBottom="290dp"
+            android:layout_marginBottom="320dp"
             android:layout_marginEnd="20dp"
             android:background="@color/primary_bg"
             android:fontFamily="@font/montserrat"
@@ -266,10 +271,10 @@
             android:id="@+id/suggesticon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="236dp"
+            android:layout_marginBottom="220dp"
             android:layout_marginEnd="520dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/group_4_copy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -282,10 +287,10 @@
             android:id="@+id/suggested"
             android:layout_width="191dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="220dp"
+            android:layout_marginBottom="255dp"
             android:layout_marginEnd="350dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="18dp"
             android:fontFamily="@font/montserrat"
             android:letterSpacing="0.03"
             android:text="Suggested Items"
@@ -299,11 +304,11 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/secscrollsnap"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_marginBottom="480dp"
+            android:layout_height="220dp"
+            android:layout_marginBottom="440dp"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="490dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

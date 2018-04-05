@@ -96,6 +96,12 @@
         </activity>
         <activity android:name=".SearchedList">
         </activity>
+        <activity android:name=".OrderHistory">
+        </activity>
+        <activity android:name=".HelpPage">
+        </activity>
+        <activity android:name=".UserAccount">
+        </activity>
     </application>
 
 </manifest>

@@ -2,14 +2,21 @@ package com.qnally.shappapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +28,10 @@ import com.qnally.shappapp.Model.Customer;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity{
+
+    private static final String TAG = "Email-Password";
+    private FirebaseAuth mAuth;
 
     EditText usremail, usrpasswd;
     Button signup, signin;
@@ -33,6 +43,11 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            //startActivity(SignedInActivity.createIntent(this, null));
+            finish(); }
 
         usremail = (EditText) findViewById(R.id.email_field);
         usrpasswd = (EditText) findViewById(R.id.passwdField);
@@ -48,6 +63,8 @@ public class Login extends AppCompatActivity {
 
                 final ProgressDialog mDialog = new ProgressDialog(Login.this);
                 mDialog.show();
+
+                //signIn(usremail.getText().toString(), usrpasswd.getText().toString());
 
                 table_customer.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -101,9 +118,60 @@ public class Login extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                skipSignIn();
+
                 tohomepage = new Intent(getApplicationContext(), Homepage.class);
                 startActivity(tohomepage);
             }
         });
+    }
+
+    private void skipSignIn() {
+        mAuth.signInAnonymously()
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInAnonymously:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInAnonymously:failure", task.getException());
+                            Toast.makeText(Login.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
+    private void signIn(String email, String password) {
+        Log.d(TAG, "signIn: "+ email);
+
+        final ProgressDialog mDialog = new ProgressDialog(Login.this);
+        mDialog.show();
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            mDialog.dismiss();
+                            Log.d(TAG, "sign:signInWithEmailSuccessful");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        }
+                        else{
+                            Log.w(TAG, "signInWithEmailFailure", task.getException());
+                            Toast.makeText(Login.this, "Failed Sign In", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 }

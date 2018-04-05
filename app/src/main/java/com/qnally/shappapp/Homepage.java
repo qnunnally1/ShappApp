@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.qnally.shappapp.Adapter.MostPopularAdapter;
 import com.qnally.shappapp.Adapter.SuggestedAdapter;
 import com.qnally.shappapp.Common.Common;
@@ -54,6 +55,8 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
     Button add2c, seemore;
     NavigationView navigationView;
 
+    Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,13 +69,15 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         category = database.getReference("Category");
 
         //set up toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.home_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("Home");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Drawer layout
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -100,12 +105,12 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
             fullName.setText(userFullName);
         }
 
+
         //set up category buttons
         elec = (ImageButton) findViewById(R.id.elecbtn);
         clothing = (ImageButton) findViewById(R.id.clothbtn);
         books = (ImageButton) findViewById(R.id.bookbtn);
         videogames = (ImageButton) findViewById(R.id.vgbtn);
-        add2c = (Button) findViewById(R.id.button);
         seemore = (Button) findViewById(R.id.seemore);
 
         //electronics
@@ -156,14 +161,6 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(vgList);
             }
         });
-
-        add2c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Homepage.this, cart_list.class));
-            }
-        });
-
 
         //set up first horizontal row
         firstRecyclerView = (RecyclerView) findViewById(R.id.firstscrollsnap);
@@ -217,21 +214,25 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_home) {
-            Intent goToHomepage= new Intent("com.qnally.shappapp.Homepage");
+            Intent goToHomepage = new Intent(Homepage.this, Homepage.class);
             startActivity(goToHomepage);
 
         } else if (id == R.id.nav_acctinfo) {
-
+            Intent goToAcctSettings = new Intent(Homepage.this, UserAccount.class);
+            startActivity(goToAcctSettings);
         } else if (id == R.id.nav_categories) {
-            //Intent goToCategories= new Intent("com.qnally.shappapp.ItemList");
-            //startActivity(goToCategories);
+            Intent goToCategories = new Intent(Homepage.this, AllCategories.class);
+            startActivity(goToCategories);
 
         } else if (id == R.id.nav_help) {
+            Intent goToHelpPage = new Intent(Homepage.this, HelpPage.class);
+            startActivity(goToHelpPage);
 
         } else if (id == R.id.nav_logout) {
             Common.current=null;
-            Intent goToHomepage= new Intent("com.qnally.shappapp.Homepage");
-            startActivity(goToHomepage);
+            Intent logout = new Intent(Homepage.this, Homepage.class);
+            logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(logout);
             Toast.makeText(Homepage.this,"You have been logged out",Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.nav_login) {
@@ -248,22 +249,34 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         return true;
     }
 
-    /*@Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // Get the notifications MenuItem and
-        // its LayerDrawable (layer-list)
-        MenuItem item = menu.findItem(R.id.button);
-        CartNotification.setAddToCart(Homepage.this, item,notificationCountCart);
-        // force the ActionBar to relayout its MenuItems.
-        // onCreateOptionsMenu(Menu) will be called again.
-        invalidateOptionsMenu();
-        return super.onPrepareOptionsMenu(menu);
-    }*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return true;
+    }
 
-    /*
-    Navigation drawer will be closed on pressing back button while it
-    is open, else we delegate to its super class.
-    */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_cart) {
+            startActivity(new Intent(Homepage.this, cart_list.class));
+            return true;
+        } else if (id == R.id.action_search) {
+            startActivity(new Intent(Homepage.this, SearchedList.class));
+        } else if (id == R.id.action_usr_acct) {
+            if(Common.current != null) {
+                startActivity(new Intent(Homepage.this, UserAccount.class));
+            }
+            else{
+                Toast.makeText(Homepage.this,"You must be logged in to view account settings.",Toast.LENGTH_LONG).show();
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -27,6 +27,7 @@ dependencies {
     compile 'com.google.firebase:firebase-database:12.0.0'
     compile 'com.squareup.retrofit2:retrofit:2.4.0'
     compile 'com.squareup.retrofit2:converter-gson:2.4.0'
+    compile 'com.github.mancj:MaterialSearchBar:0.7.6'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     compile 'com.cepheuen.elegant-number-button:lib:1.0.2'
     testImplementation 'junit:junit:4.12'
@@ -37,6 +38,7 @@ dependencies {
     //compile 'com.craftman.cardform:cardform:0.0.2'
     //compile 'com.stripe:stripe-android:6.1.1'
     compile 'com.braintreepayments:card-form:3.2.1-SNAPSHOT'
+    compile 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
     compile 'com.github.dbachelder:CreditCardEntry:1.4.7'
     implementation("com.mikepenz:materialdrawer:6.0.6@aar") {
         transitive = true
@@ -68,6 +70,9 @@ repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url "https://jitpack.io" }
 }
+
+
+
 
 
 

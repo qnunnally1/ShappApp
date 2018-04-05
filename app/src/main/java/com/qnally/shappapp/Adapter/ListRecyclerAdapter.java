@@ -75,7 +75,6 @@ public class ListRecyclerAdapter extends RecyclerView.Adapter<ListRecyclerAdapte
         ImageView image;
         TextView title, price;
         CardView mCardView;
-        Button add;
 
         public ListViewHolder(View itemView) {
             super(itemView);
@@ -83,7 +82,6 @@ public class ListRecyclerAdapter extends RecyclerView.Adapter<ListRecyclerAdapte
             image = (ImageView) itemView.findViewById(R.id.item_img);
             title = (TextView) itemView.findViewById(R.id.list_title);
             price = (TextView) itemView.findViewById(R.id.list_price);
-            //add = (Button) itemView.findViewById(R.id.list_add2c);
             mCardView = (CardView) itemView.findViewById(R.id.card);
         }
     }

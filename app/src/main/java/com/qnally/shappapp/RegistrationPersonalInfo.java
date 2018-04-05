@@ -3,6 +3,7 @@ package com.qnally.shappapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +40,10 @@ import com.seatgeek.placesautocomplete.model.Place;
 import com.seatgeek.placesautocomplete.model.PlaceDetails;
 
 public class RegistrationPersonalInfo extends AppCompatActivity {
+
+    private static final String TAG = "Email-Password";
+
+    FirebaseAuth mAuth;
 
     Toolbar toolbar;
     PlacesAutocompleteTextView address;
@@ -114,6 +124,9 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 check();
+
+                //createUser(email.getText().toString(), password.getText().toString());
+
                 final ProgressDialog mDialog = new ProgressDialog(RegistrationPersonalInfo.this);
                 mDialog.show();
 
@@ -184,5 +197,28 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
             password_verify.setHintTextColor(Color.RED);
             password_verify.setHint("Re-enter password");
         }
+    }
+
+    private void createUser(String email, String password) {
+        Log.d(TAG, "signIn: "+ email);
+
+        final ProgressDialog mDialog = new ProgressDialog(RegistrationPersonalInfo.this);
+        mDialog.show();
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            mDialog.dismiss();
+                            Log.d(TAG, "sign:signInWithEmailSuccessful");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        }
+                        else{
+                            Log.w(TAG, "signInWithEmailFailure", task.getException());
+                            Toast.makeText(RegistrationPersonalInfo.this, "Failed Sign In", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

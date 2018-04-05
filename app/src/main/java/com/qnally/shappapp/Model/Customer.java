@@ -3,6 +3,9 @@ package com.qnally.shappapp.Model;
 public class Customer {
 
     private String first_name, last_name, password, email;
+    private String creditcard;
+    private BillingAddress ba;
+    private ShippingAddress sa;
 
     public Customer() {
     }
@@ -12,6 +15,9 @@ public class Customer {
         this.last_name = last_name;
         this.password = password;
         this.email = email;
+        ba = null;
+        sa = null;
+        creditcard = null;
     }
 
     public String getFirst_name() {
@@ -44,5 +50,29 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCreditcard() {
+        return creditcard;
+    }
+
+    public void setCreditcard(String creditcard) {
+        this.creditcard = creditcard;
+    }
+
+    public BillingAddress getBa() {
+        return ba;
+    }
+
+    public void setBa(BillingAddress ba) {
+        this.ba = ba;
+    }
+
+    public ShippingAddress getSa() {
+        return sa;
+    }
+
+    public void setSa(ShippingAddress sa) {
+        this.sa = sa;
     }
 }

@@ -47,28 +47,22 @@ import java.util.List;
 
 public class ItemList extends AppCompatActivity{
 
-    List<Item> mItems = mItems = new ArrayList<>();
+    List<Item> mItems = new ArrayList<>();
 
     RecyclerView list;
     RecyclerView.Adapter mAdapter;
-    //ListRecyclerAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
     Toolbar mToolbar;
-    //Button add;
 
     FirebaseDatabase database;
     DatabaseReference itemList;
 
     String categoryId="";
 
-    //public static int notificationCountCart = 0;
-
-
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.homepage_2);
-        new FetchCountTask().execute();
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -82,7 +76,6 @@ public class ItemList extends AppCompatActivity{
         database = FirebaseDatabase.getInstance();
         itemList = database.getReference(categoryId);
 
-        //add = (Button) findViewById(R.id.list_add2c);
         list = (RecyclerView) findViewById(R.id.recycler_view);
         mLayoutManager = new GridLayoutManager(this, 2);
         list.setLayoutManager(mLayoutManager);
@@ -108,18 +101,11 @@ public class ItemList extends AppCompatActivity{
             }
         });
 
-        /*add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Item item = mItems.get
-                //Item item = new Item( item_img, item_title, item_price, item_details, "0");
-                Common.currentItems.add(item);
-            }
-        });*/
-
         switch(categoryId){
             case "Electronics":
                 try {
+                    TextView text = (TextView) findViewById(R.id.Categorytxt);
+                    text.setTextColor(Color.BLACK);
                     Glide.with(this).load(R.drawable.elec_notitle).into((ImageView) findViewById(R.id.backdrop));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -127,6 +113,8 @@ public class ItemList extends AppCompatActivity{
                 break;
             case "Video Games":
                 try {
+                    TextView text = (TextView) findViewById(R.id.Categorytxt);
+                    text.setTextColor(Color.WHITE);
                     Glide.with(this).load(R.drawable.vg_notitle).into((ImageView) findViewById(R.id.backdrop));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -134,6 +122,8 @@ public class ItemList extends AppCompatActivity{
                 break;
             case "Clothing":
                 try {
+                    TextView text = (TextView) findViewById(R.id.Categorytxt);
+                    text.setTextColor(Color.WHITE);
                     Glide.with(this).load(R.drawable.cloth_notitle).into((ImageView) findViewById(R.id.backdrop));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -141,6 +131,8 @@ public class ItemList extends AppCompatActivity{
                 break;
             case "Household":
                 try {
+                    TextView text = (TextView) findViewById(R.id.Categorytxt);
+                    text.setTextColor(Color.BLACK);
                     Glide.with(this).load(R.drawable.household_notitle).into((ImageView) findViewById(R.id.backdrop));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -148,6 +140,8 @@ public class ItemList extends AppCompatActivity{
                 break;
             case "Entertainment":
                 try {
+                    TextView text = (TextView) findViewById(R.id.Categorytxt);
+                    text.setTextColor(Color.WHITE);
                     Glide.with(this).load(R.drawable.ent_notitle).into((ImageView) findViewById(R.id.backdrop));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -155,6 +149,8 @@ public class ItemList extends AppCompatActivity{
                 break;
             case "Books":
                 try {
+                    TextView text = (TextView) findViewById(R.id.Categorytxt);
+                    text.setTextColor(Color.BLACK);
                     Glide.with(this).load(R.drawable.books_notitle).into((ImageView) findViewById(R.id.backdrop));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -171,7 +167,7 @@ public class ItemList extends AppCompatActivity{
         appBarLayout.setExpanded(true);
         TextView text = (TextView) findViewById(R.id.Categorytxt);
         text.setText(categoryId);
-        text.setTextColor(Color.BLACK);
+        //text.setTextColor(Color.BLACK);
 
         // hiding & showing the title when toolbar expanded & collapsed
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -251,30 +247,8 @@ public class ItemList extends AppCompatActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
 
-        /*// Get the notifications MenuItem and
-        // its LayerDrawable (layer-list)
-        MenuItem item = menu.findItem(R.id.ic_badge);
-        LayerDrawable icon = (LayerDrawable) item.getIcon();
-
-        // Update LayerDrawable's BadgeDrawable
-        CartCount.setBadgeCount(this, icon, notificationCountCart);
-
-        this.menu = menu;*/
-
         return true;
     }
-
-    /*@Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // Get the notifications MenuItem and
-        // its LayerDrawable (layer-list)
-        MenuItem item = menu.findItem(R.id.action_cart);
-        CartNotification.setAddToCart(ItemList.this, item, notificationCountCart);
-        // force the ActionBar to relayout its MenuItems.
-        // onCreateOptionsMenu(Menu) will be called again.
-        invalidateOptionsMenu();
-        return super.onPrepareOptionsMenu(menu);
-    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -286,37 +260,10 @@ public class ItemList extends AppCompatActivity{
             return true;
         } else if ( id == R.id.action_home) {
             startActivity(new Intent(ItemList.this, Homepage.class));
+        } else if(id == R.id.action_search) {
+            startActivity(new Intent(ItemList.this, SearchedList.class));
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /*
-    Updates the count of notifications in the ActionBar.
-     */
-    private void updateNotificationsBadge(int count) {
-        //notificationCountCart = count;
-
-        // force the ActionBar to relayout its MenuItems.
-        // onCreateOptionsMenu(Menu) will be called again.
-        invalidateOptionsMenu();
-    }
-
-    /*
-    Sample AsyncTask to fetch the notifications count
-    */
-    class FetchCountTask extends AsyncTask<Void, Void, Integer> {
-
-        @Override
-        protected Integer doInBackground(Void... params) {
-            // example count. This is where you'd
-            // query your data store for the actual count.
-            return 5;
-        }
-
-        @Override
-        public void onPostExecute(Integer count) {
-            updateNotificationsBadge(count);
-        }
     }
 }
