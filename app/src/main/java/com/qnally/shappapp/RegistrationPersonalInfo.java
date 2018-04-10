@@ -147,7 +147,7 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
                             }
                             else{
                                 mDialog.dismiss();
-                                Customer customer = new Customer(firstname.getText().toString(),lastname.getText().toString(),password.getText().toString(),email2string);
+                                Customer customer = new Customer(firstname.getText().toString(),lastname.getText().toString(),password.getText().toString(),email2string, null, null, null);
                                 table_customer.child(email2string).setValue(customer);
                                 finish();
                                 tohome = new Intent(getApplicationContext(), Homepage.class);

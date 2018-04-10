@@ -92,15 +92,26 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AllCategories">
+        <activity android:name=".AllCategories"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SearchedList">
+        <activity android:name=".SearchedList"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".OrderHistory">
+        <activity android:name=".OrderHistory"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".HelpPage">
+        <activity android:name=".HelpPage"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".UserAccount">
+        <activity android:name=".UserAccount"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".OrderHistoryList"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".OrderReview"
+                  android:noHistory="true">>
         </activity>
     </application>
 

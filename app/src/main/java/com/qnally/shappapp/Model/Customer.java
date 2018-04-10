@@ -3,21 +3,22 @@ package com.qnally.shappapp.Model;
 public class Customer {
 
     private String first_name, last_name, password, email;
-    private String creditcard;
-    private BillingAddress ba;
-    private ShippingAddress sa;
+    //private String creditcard;
+    private BillingAddress billing_Address;
+    private ShippingAddress shipping_Address;
+    private Payment Payment;
 
     public Customer() {
     }
 
-    public Customer(String first_name, String last_name, String password, String email) {
+    public Customer(String first_name, String last_name, String password, String email, ShippingAddress sa, BillingAddress ba, Payment pay) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.password = password;
         this.email = email;
-        ba = null;
-        sa = null;
-        creditcard = null;
+        this.billing_Address = ba;
+        this.shipping_Address = sa;
+        Payment = pay;
     }
 
     public String getFirst_name() {
@@ -52,27 +53,27 @@ public class Customer {
         this.email = email;
     }
 
-    public String getCreditcard() {
-        return creditcard;
+    public ShippingAddress getShipping_Address() {
+        return shipping_Address;
     }
 
-    public void setCreditcard(String creditcard) {
-        this.creditcard = creditcard;
+    public void setShipping_Address(ShippingAddress shipping_Address) {
+        this.shipping_Address = shipping_Address;
     }
 
-    public BillingAddress getBa() {
-        return ba;
+    public BillingAddress getBilling_Address() {
+        return billing_Address;
     }
 
-    public void setBa(BillingAddress ba) {
-        this.ba = ba;
+    public void setBilling_Address(BillingAddress billing_Address) {
+        this.billing_Address = billing_Address;
     }
 
-    public String getSa() {
-        return sa.getFullAddress();
+    public Payment getPayment() {
+        return Payment;
     }
 
-    public void setSa(ShippingAddress sa) {
-        this.sa = sa;
+    public void setPayment(Payment payment) {
+        this.Payment = payment;
     }
 }

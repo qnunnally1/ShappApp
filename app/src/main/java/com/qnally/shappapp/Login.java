@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity{
                             if (cust != null) {
                                 if (cust.getPassword().equals(usrpasswd.getText().toString())) {
                                     tohomepage = new Intent(getApplicationContext(), Homepage.class);
-                                    Customer cust2 = new Customer(cust.getFirst_name(), cust.getLast_name(), cust.getPassword(), email2string);
+                                    Customer cust2 = new Customer(cust.getFirst_name(), cust.getLast_name(), cust.getPassword(), email2string, cust.getShipping_Address(), cust.getBilling_Address(), cust.getPayment());
                                     Common.current = cust2;
                                     new Database(getBaseContext()).cleanCart();
                                     startActivity(tohomepage);
