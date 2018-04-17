@@ -44,11 +44,16 @@ import com.seatgeek.placesautocomplete.model.AddressComponentType;
 import com.seatgeek.placesautocomplete.model.Place;
 import com.seatgeek.placesautocomplete.model.PlaceDetails;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 
 public class RegistrationPayment extends AppCompatActivity{
@@ -267,6 +272,19 @@ public class RegistrationPayment extends AppCompatActivity{
                 if(ba == null) {
                     ba = new BillingAddress(billing_address.getText().toString(), bcity.getText().toString(),
                             bstate.getText().toString(), bzip.getText().toString());
+                    customerref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.child(email).exists()){
+                                dataSnapshot.getRef().child(email).child("billing_Address").setValue(ba);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
 
                 //Common.current.setBa(ba);
@@ -275,6 +293,20 @@ public class RegistrationPayment extends AppCompatActivity{
                     if(sa == null) {
                         sa = new ShippingAddress(ship_address.getText().toString(), ship_city.getText().toString(),
                                 ship_state.getText().toString(), ship_zip.getText().toString());
+
+                        customerref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.child(email).exists()){
+                                    dataSnapshot.getRef().child(email).child("shipping_Address").setValue(sa);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
                     }
 
                     //Common.current.setSa(sa);
@@ -282,6 +314,20 @@ public class RegistrationPayment extends AppCompatActivity{
                     if(sa == null) {
                         sa = new ShippingAddress(billing_address.getText().toString(), bcity.getText().toString(),
                                 bstate.getText().toString(), bzip.getText().toString());
+
+                        customerref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.child(email).exists()){
+                                    dataSnapshot.getRef().child(email).child("shipping_Address").setValue(sa);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
                     }
                     //Common.current.setSa(sa);
                 }
@@ -293,12 +339,29 @@ public class RegistrationPayment extends AppCompatActivity{
                     String cvv = form.getCreditCard().getSecurityCode();
 
                     pay = new Payment(cred, exp, cvv, cardType);
+
+                    customerref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.child(email).exists()){
+                                dataSnapshot.getRef().child(email).child("Payment").setValue(pay);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
 
                 Date date = new Date();
                 SimpleDateFormat dateFormatter = new SimpleDateFormat("MMMM d, yyyy");
                 String orderDate = dateFormatter.format(date);
-                String id = String.valueOf(System.currentTimeMillis());
+                long id = System.currentTimeMillis();
+
+                Random rand = new Random();
+                int days = rand.nextInt(5)+1;
 
                 PlacedOrder order = new PlacedOrder(
                         name,
@@ -308,7 +371,8 @@ public class RegistrationPayment extends AppCompatActivity{
                         ba,
                         ((List<Order>) getIntent().getExtras().getSerializable("Order")),
                         orderDate,
-                        id
+                        id,
+                        days
                 );
 
 
@@ -327,8 +391,16 @@ public class RegistrationPayment extends AppCompatActivity{
                 Toast.makeText(RegistrationPayment.this, "Thank you! You order has been placed.", Toast.LENGTH_SHORT).show();
                 finish();
 
+                DateTime now = DateTime.now().plusDays(days);
+                //SimpleDateFormat formatter = new SimpleDateFormat("MMMM d, yyyy");
+                DateTimeFormatter fmt = DateTimeFormat.forPattern("MMMM d, yyyy");
+
+                String idString = String.valueOf(id);
+                String arrival = fmt.print(now);
+
                 Intent intent = new Intent(RegistrationPayment.this,OrderReview.class);
-                intent.putExtra("Id", id);
+                intent.putExtra("Arrival", arrival);
+                intent.putExtra("Id", idString);
                 intent.putExtra("Date", orderDate);
                 intent.putExtra("Total", total);
                 intent.putExtra("Order", (Serializable) ((List<Order>) getIntent().getExtras().getSerializable("Order")));
@@ -340,38 +412,30 @@ public class RegistrationPayment extends AppCompatActivity{
 
     private void check() {
             if(bcity.getText().toString().equals("")){
-                bcity.setHintTextColor(Color.RED);
-                bcity.setHint("Enter address");
+                bcity.setError("Enter address");
             }
             if(bcity.getText().toString().equals("")){
-                bcity.setHintTextColor(Color.RED);
-                bcity.setHint("Enter address");
+                bcity.setError("Enter address");
             }
             if(bstate.getText().toString().equals("")) {
-                bstate.setHintTextColor(Color.RED);
-                bstate.setHint("Enter address");
+                bstate.setError("Enter address");
             }
             if(bzip.getText().toString().equals("")){
-                bzip.setHintTextColor(Color.RED);
-                bzip.setHint("Enter address");
+                bzip.setError("Enter address");
             }
             if(!bill_check.isChecked()){
 
                 if(ship_address.getText().toString().equals("")) {
-                    ship_address.setHintTextColor(Color.RED);
-                    ship_address.setHint("Enter address");
+                    ship_address.setError("Enter address");
                 }
                 if(ship_city.getText().toString().equals("")){
-                    ship_city.setHintTextColor(Color.RED);
-                    ship_city.setHint("Enter address");
+                    ship_city.setError("Enter address");
                 }
                 if(ship_state.getText().toString().equals("")) {
-                    ship_state.setHintTextColor(Color.RED);
-                    ship_state.setHint("Enter address");
+                    ship_state.setError("Enter address");
                 }
                 if(ship_zip.getText().toString().equals("")){
-                    ship_zip.setHintTextColor(Color.RED);
-                    ship_zip.setHint("Enter address");
+                    ship_zip.setError("Enter address");
                 }
             }
     }

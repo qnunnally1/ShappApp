@@ -95,7 +95,7 @@
         android:layout_height="@dimen/dont_have_acct_txt_height"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="34dp"
         android:fontFamily="@font/varela_round"
         android:gravity="center_horizontal"
         android:text="Don't have an account?"
@@ -114,7 +114,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="@dimen/create_acct_width"
         android:layout_height="40dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="110dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@color/primary_bg"
@@ -128,5 +128,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/forgot_passwd"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:background="@color/primary_bg"
+        android:fontFamily="@font/varela_round"
+        android:text="Forgot Your Password?"
+        android:textAlignment="center"
+        android:textColor="#234668"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintTop_toBottomOf="@id/create_new_acct"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        style="?android:attr/borderlessButtonStyle"
+        />
 
 </android.support.constraint.ConstraintLayout>

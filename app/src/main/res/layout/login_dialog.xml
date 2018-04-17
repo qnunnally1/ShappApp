@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/primary_bg"
+              android:padding="5dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:text="Login"
+        android:textColor="@color/shapp_blue_text"
+        android:fontFamily="@font/varela_round"
+        android:textSize="25sp"
+        />
+
+    <EditText
+        android:id="@+id/dg_email"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/email"
+        android:ems="10"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:paddingEnd="2dp"
+        android:paddingStart="15dp"/>
+
+    <EditText
+        android:id="@+id/dg_password"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/password"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:paddingEnd="2dp"
+        android:paddingStart="15dp"/>
+
+    <!--<Button
+        android:id="@+id/dg_signinbtn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/signinbutton"/>-->
+
+    <TextView
+        android:id="@+id/dg_signup_txt"
+        android:layout_width="201dp"
+        android:layout_height="@dimen/dont_have_acct_txt_height"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/varela_round"
+        android:layout_gravity="center_horizontal"
+        android:text="Don't have an account?"
+        android:textAlignment="center"
+        android:textColor="#505050"
+        android:textSize="18sp"
+        android:visibility="visible"
+        />
+
+    <Button
+        android:id="@+id/dg_create_new_acct"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/create_acct_width"
+        android:layout_height="40dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/primary_bg"
+        android:fontFamily="@font/varela_round"
+        android:text="@string/new_acct_btn"
+        android:textAlignment="center"
+        android:textColor="#234668"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:typeface="normal"/>
+
+</LinearLayout>

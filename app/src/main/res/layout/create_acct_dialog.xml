@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/primary_bg"
+              android:padding="5dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:text="Create Account"
+        android:textColor="@color/shapp_blue_text"
+        android:fontFamily="@font/varela_round"
+        android:textSize="25sp"
+        />
+
+    <EditText
+        android:id="@+id/dg_first_name"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/formbx"
+        android:ems="10"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/shapp_blue_text"
+        android:hint="@string/first_name_hint"
+        android:paddingEnd="2dp"
+        android:paddingStart="15dp"/>
+
+    <EditText
+        android:id="@+id/dg_last_name"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/formbx"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/shapp_blue_text"
+        android:ems="10"
+        android:hint="@string/last_name_hint"
+        android:paddingEnd="2dp"
+        android:paddingStart="15dp"/>
+
+    <EditText
+        android:id="@+id/dg_signup_email"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/formbx"
+        android:ems="10"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/shapp_blue_text"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:paddingEnd="2dp"
+        android:paddingStart="15dp"/>
+
+    <EditText
+        android:id="@+id/dg_signup_password"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/formbx"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/shapp_blue_text"
+        android:ems="10"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:paddingEnd="2dp"
+        android:paddingStart="15dp"/>
+
+    <EditText
+        android:id="@+id/dg_vrfy_password"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/formbx"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/shapp_blue_text"
+        android:ems="10"
+        android:hint="Re-enter Password"
+        android:inputType="textPassword"
+        android:paddingEnd="2dp"
+        android:paddingStart="15dp"/>
+
+    <!--<Button
+        android:id="@+id/dg_create_btn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/sign_in_button"/>-->
+</LinearLayout>

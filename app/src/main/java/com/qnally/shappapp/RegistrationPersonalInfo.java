@@ -39,6 +39,9 @@ import com.seatgeek.placesautocomplete.model.AddressComponentType;
 import com.seatgeek.placesautocomplete.model.Place;
 import com.seatgeek.placesautocomplete.model.PlaceDetails;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegistrationPersonalInfo extends AppCompatActivity {
 
     private static final String TAG = "Email-Password";
@@ -134,35 +137,50 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
                         && !email.getText().toString().equals("") && !password.getText().toString().equals("")
                         && !password.getText().toString().equals("")
                         && !password_verify.getText().toString().equals("")){
+                    if(checkEmail(email.getText().toString())) {
+                        if(checkPass(password.getText().toString())) {
+                            if (checkPassMatch(password.getText().toString(), password_verify.getText().toString())) {
 
-                    table_customer.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                table_customer.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            String email2string = email.getText().toString().replace(".com","");
+                                        String email2string = email.getText().toString().replace(".com", "");
 
-                            if(dataSnapshot.child(email2string).exists()){
+                                        if (dataSnapshot.child(email2string).exists()) {
+                                            mDialog.dismiss();
+                                            Toast.makeText(RegistrationPersonalInfo.this, "Email already exists", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            mDialog.dismiss();
+                                            Customer customer = new Customer(firstname.getText().toString(), lastname.getText().toString(), password.getText().toString(), email2string, null, null, null);
+                                            table_customer.child(email2string).setValue(customer);
+                                            finish();
+                                            tohome = new Intent(getApplicationContext(), Homepage.class);
+                                            Common.current = customer;
+                                            startActivity(tohome);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                            } else {
                                 mDialog.dismiss();
-                                Toast.makeText(RegistrationPersonalInfo.this, "Email already exists", Toast.LENGTH_SHORT).show();
+                                password.setError("Passwords do not match");
                             }
-                            else{
-                                mDialog.dismiss();
-                                Customer customer = new Customer(firstname.getText().toString(),lastname.getText().toString(),password.getText().toString(),email2string, null, null, null);
-                                table_customer.child(email2string).setValue(customer);
-                                finish();
-                                tohome = new Intent(getApplicationContext(), Homepage.class);
-                                Common.current = customer;
-                                startActivity(tohome);
-                            }
+                        } else {
+                            mDialog.dismiss();
+                            password.setError("Passwords should be longer than 6 characters");
                         }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
+                    } else {
+                        mDialog.dismiss();
+                        email.setError("Invalid Email");
+                    }
                 }
                 else{
+                    mDialog.dismiss();
                     check();
                 }
             }
@@ -175,27 +193,45 @@ public class RegistrationPersonalInfo extends AppCompatActivity {
         return true;
     }
 
+    private boolean checkPass(String pass) {
+        if (pass != null && pass.length() > 6) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkEmail(String email) {
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean checkPassMatch(String pass1, String pass2) {
+        if(pass1.equals(pass2)) {
+            return true;
+        }
+        return false;
+    }
+
     public void check(){
 
         if(firstname.getText().toString().equals("")){
-            firstname.setHintTextColor(Color.RED);
-            firstname.setHint("Enter first name");
+            firstname.setError("Enter first name");
         }
         if(lastname.getText().toString().equals("")) {
-            lastname.setHintTextColor(Color.RED);
-            lastname.setHint("Enter last name");
+            lastname.setError("Enter last name");
         }
         if(email.getText().toString().equals("")){
-            email.setHintTextColor(Color.RED);
-            email.setHint("Enter email");
+            email.setError("Enter email");
         }
         if(password.getText().toString().equals("")){
-            password.setHintTextColor(Color.RED);
-            password.setHint("Enter password");
+            password.setError("Enter password");
         }
         if(password_verify.getText().toString().equals("")){
-            password_verify.setHintTextColor(Color.RED);
-            password_verify.setHint("Re-enter password");
+            password_verify.setError("Re-enter password");
         }
     }
 

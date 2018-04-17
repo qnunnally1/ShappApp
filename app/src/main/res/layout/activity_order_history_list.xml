@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/order_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.qnally.shappapp.cart_list"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/order_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/order_list_toolbar"
+            android:layout_width="match_parent"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:background="@color/primary_bg"
+            android:layout_height="?attr/actionBarSize"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/order_recycler_view_cart"
+        android:layout_marginTop="63dp"
+        android:layout_width="match_parent"
+        android:layout_height="775dp"
+        android:scrollbars="vertical" />
+
+    <android.support.v7.widget.CardView
+        app:cardBackgroundColor="@color/primary_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total: "
+                    android:textSize="24sp"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:id="@+id/order_total"
+                    android:text="$0.00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="24sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item Count:"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:layout_marginStart="150dp"/>
+
+                <TextView
+                    android:id="@+id/order_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 0"
+                    android:textColor="#000000"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.design.widget.CoordinatorLayout>

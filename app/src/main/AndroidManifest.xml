@@ -50,7 +50,8 @@
             android:name=".RegistrationPayment"
             android:parentActivityName=".RegistrationPersonalInfo"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true">
         </activity>
         <activity
             android:name=".Homepage"
@@ -92,26 +93,62 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AllCategories"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".AllCategories"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SearchedList"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".SearchedList"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".OrderHistory"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".OrderHistory"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".HelpPage"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".HelpPage"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".UserAccount"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".UserAccount"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".OrderHistoryList"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".OrderHistoryList"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".OrderReview"
-                  android:noHistory="true">>
+        <activity
+            android:name=".OrderReview"
+            android:noHistory="true">
+            >
+        </activity>
+        <activity
+            android:name=".ForgotPassword"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Login"/>
+        </activity>
+        <activity android:name=".InfoModify"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:name=".ChangeProfile"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:name=".PaymentChange"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:name=".ShippingChange"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:name=".BillingChange"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
         </activity>
     </application>
 

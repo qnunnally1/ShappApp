@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity{
     private FirebaseAuth mAuth;
 
     EditText usremail, usrpasswd;
-    Button signup, signin;
+    Button signup, signin, forgot;
     ImageButton skip;
     Intent register, tohomepage;
 
@@ -52,6 +52,7 @@ public class Login extends AppCompatActivity{
 
         usremail = (EditText) findViewById(R.id.email_field);
         usrpasswd = (EditText) findViewById(R.id.passwdField);
+        forgot = (Button)findViewById(R.id.forgot_passwd);
 
         //Init Firebase
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -67,42 +68,54 @@ public class Login extends AppCompatActivity{
 
                 //signIn(usremail.getText().toString(), usrpasswd.getText().toString());
 
-                table_customer.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                if(!usremail.getText().toString().equals("") && !usrpasswd.getText().toString().equals("")) {
+                    table_customer.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        String email2string = usremail.getText().toString().replace(".com","");
+                            String email2string = usremail.getText().toString().replace(".com", "");
 
-                        //check if customer exists in database
-                        if(dataSnapshot.child(email2string).exists()) {
+                            //check if customer exists in database
+                            if (dataSnapshot.child(email2string).exists()) {
 
-                            //get customer info
-                            mDialog.dismiss();
-                            Customer cust = dataSnapshot.child(email2string).getValue(Customer.class);
-                            if (cust != null) {
-                                if (cust.getPassword().equals(usrpasswd.getText().toString())) {
-                                    tohomepage = new Intent(getApplicationContext(), Homepage.class);
-                                    Customer cust2 = new Customer(cust.getFirst_name(), cust.getLast_name(), cust.getPassword(), email2string, cust.getShipping_Address(), cust.getBilling_Address(), cust.getPayment());
-                                    Common.current = cust2;
-                                    new Database(getBaseContext()).cleanCart();
-                                    startActivity(tohomepage);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Login.this, "Failed Sign In", Toast.LENGTH_SHORT).show();
+                                //get customer info
+                                mDialog.dismiss();
+                                Customer cust = dataSnapshot.child(email2string).getValue(Customer.class);
+                                if (cust != null) {
+                                    if (cust.getPassword().equals(usrpasswd.getText().toString())) {
+                                        tohomepage = new Intent(getApplicationContext(), Homepage.class);
+                                        Customer cust2 = new Customer(cust.getFirst_name(), cust.getLast_name(), cust.getPassword(), email2string, cust.getShipping_Address(), cust.getBilling_Address(), cust.getPayment());
+                                        Common.current = cust2;
+                                        new Database(getBaseContext()).cleanCart();
+                                        startActivity(tohomepage);
+                                        finish();
+
+                                        table_customer.removeEventListener(this);
+                                    } else {
+                                        Toast.makeText(Login.this, "Failed Sign In", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
+                            } else {
+                                mDialog.dismiss();
+                                Toast.makeText(Login.this, "Credentials Not Recognized", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else{
-                            mDialog.dismiss();
-                            Toast.makeText(Login.this, "Credentials Not Recognized", Toast.LENGTH_SHORT).show();
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
                         }
+                    });
+                } else {
+                    mDialog.dismiss();
+                    if(usrpasswd.getText().toString().equals("")){
+                        usrpasswd.setError("Password field is empty");
                     }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
+                    if(usremail.getText().toString().equals("")){
+                        usremail.setError("Email field is empty");
                     }
-                });
+                }
             }
         });
 
@@ -125,6 +138,13 @@ public class Login extends AppCompatActivity{
                 Common.current = null;
                 tohomepage = new Intent(getApplicationContext(), Homepage.class);
                 startActivity(tohomepage);
+            }
+        });
+
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, ForgotPassword.class));
             }
         });
     }
